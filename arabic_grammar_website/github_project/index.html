@@ -1,0 +1,3761 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بصائر النحو في اللغة العربية - بدر عمران</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="description" content="دوسية تعليمية تفاعلية لتعلم النحو العربي بطريقة عصرية وممتعة">
+    <meta name="theme-color" content="#2E86AB">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="بصائر النحو">
+    <meta name="msapplication-TileImage" content="/icon-192.png">
+    <meta name="msapplication-TileColor" content="#2E86AB">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- PWA Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
+    <link rel="apple-touch-icon" href="/icon-192.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@300;400;500;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Code Protection -->
+    <script>
+        // Disable right-click context menu
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Disable F12, Ctrl+Shift+I, Ctrl+U, Ctrl+S
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' || 
+                (e.ctrlKey && e.shiftKey && e.key === 'I') ||
+                (e.ctrlKey && e.key === 'u') ||
+                (e.ctrlKey && e.key === 's') ||
+                (e.ctrlKey && e.shiftKey && e.key === 'C')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+        
+        // Disable text selection
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Disable drag
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Clear console periodically
+        setInterval(function() {
+            console.clear();
+        }, 1000);
+        
+        // Obfuscate console
+        console.log = function() {};
+        console.warn = function() {};
+        console.error = function() {};
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            line-height: 1.6;
+            color: #2C3E50;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            direction: rtl;
+        }
+
+        .container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        /* صفحة الغلاف */
+        .cover-page {
+            height: 297mm;
+            background: linear-gradient(45deg, #2eab75 0%, #3b94a2 50%, #2db6d1 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.3;
+        }
+
+        .cover-title {
+            font-family: 'Cairo', sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            z-index: 1;
+        }
+
+        .cover-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            z-index: 1;
+        }
+
+        .cover-author {
+            font-family: 'Cairo', sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            z-index: 1;
+        }
+
+        .cover-decoration {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 3px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            top: 10%;
+            right: 10%;
+            animation: rotate 20s linear infinite;
+        }
+
+        .cover-decoration::before {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: rotate 15s linear infinite reverse;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* صفحات المحتوى */
+        .content-page {
+            min-height: 297mm;
+            padding: 30mm 20mm;
+            page-break-after: always;
+            background: white;
+        }
+
+        .page-header {
+            border-bottom: 3px solid #2E86AB;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .page-title {
+            font-family: 'Cairo', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2E86AB;
+            margin: 0;
+        }
+
+        .page-number {
+            background: #F18F01;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #A23B72;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: linear-gradient(90deg, rgba(162, 59, 114, 0.1) 0%, transparent 100%);
+            border-right: 5px solid #A23B72;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 1px solid #dee2e6;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(46, 134, 171, 0.1) 0%, rgba(162, 59, 114, 0.1) 100%);
+            border: 2px solid #2E86AB;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, rgba(241, 143, 1, 0.1) 0%, rgba(199, 62, 29, 0.1) 100%);
+            border: 2px solid #F18F01;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .mind-map {
+            background: white;
+            border: 2px solid #2E86AB;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .mind-map-title {
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2E86AB;
+            margin-bottom: 20px;
+        }
+
+        .mind-map-content {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .mind-map-node {
+            background: linear-gradient(135deg, #2E86AB, #A23B72);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .mind-map-node:hover {
+            transform: translateY(-5px);
+        }
+
+        .grammar-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .grammar-table th {
+            background: linear-gradient(135deg, #2E86AB, #A23B72);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+        }
+
+        .grammar-table td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .grammar-table tr:nth-child(even) {
+            background: rgba(46, 134, 171, 0.05);
+        }
+
+        .arabic-text {
+            font-family: 'Amiri', serif;
+            font-size: 1.2rem;
+            line-height: 2;
+            text-align: center;
+            background: rgba(241, 143, 1, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .definition {
+            background: linear-gradient(135deg, rgba(46, 134, 171, 0.1), rgba(162, 59, 114, 0.1));
+            border-right: 5px solid #2E86AB;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 15px 15px 0;
+        }
+
+        .definition-title {
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            color: #2E86AB;
+            margin-bottom: 10px;
+        }
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .example-card {
+            background: white;
+            border: 2px solid #F18F01;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .example-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .example-title {
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+            color: #F18F01;
+            margin-bottom: 10px;
+        }
+
+        .page-footer {
+            position: fixed;
+            bottom: 20mm;
+            left: 20mm;
+            right: 20mm;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 10px;
+        }
+
+        /* Media Queries للتجاوب الكامل مع جميع الأجهزة */
+        
+        /* الهواتف الصغيرة جداً (أقل من 320px) */
+        @media (max-width: 319px) {
+            .cover-title {
+                font-size: 1.8rem;
+            }
+            .cover-subtitle {
+                font-size: 0.9rem;
+            }
+            .cover-author {
+                font-size: 1.2rem;
+            }
+            .content-page {
+                padding: 10px;
+            }
+            .page-title {
+                font-size: 1.3rem;
+            }
+            .grammar-table {
+                font-size: 0.6rem;
+            }
+            .grammar-table th,
+            .grammar-table td {
+                padding: 4px;
+            }
+        }
+
+        /* الهواتف الصغيرة (320px - 480px) */
+        @media (min-width: 320px) and (max-width: 480px) {
+            .container {
+                margin: 0;
+                box-shadow: none;
+            }
+            
+            .cover-page {
+                height: 100vh;
+                padding: 20px 15px;
+            }
+            
+            .cover-title {
+                font-size: 2.2rem;
+                line-height: 1.1;
+                margin-bottom: 1.5rem;
+            }
+            
+            .cover-subtitle {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+            
+            .cover-author {
+                font-size: 1.4rem;
+            }
+            
+            .content-page {
+                padding: 15px;
+                min-height: auto;
+            }
+            
+            .page-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            
+            .page-title {
+                font-size: 1.5rem;
+            }
+            
+            .page-number {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .section-title {
+                font-size: 1.2rem;
+                padding: 12px;
+            }
+            
+            .info-box,
+            .highlight-box,
+            .example-box {
+                padding: 15px;
+                margin: 15px 0;
+            }
+            
+            .examples-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .mind-map {
+                padding: 15px;
+                margin: 20px 0;
+            }
+            
+            .mind-map-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .mind-map-node {
+                width: 100%;
+                max-width: 200px;
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .grammar-table {
+                font-size: 0.7rem;
+            }
+            
+            .grammar-table th,
+            .grammar-table td {
+                padding: 6px;
+            }
+            
+            .arabic-text {
+                font-size: 1rem;
+                padding: 15px;
+            }
+            
+            .cover-decoration {
+                width: 120px;
+                height: 120px;
+                top: 5%;
+                right: 5%;
+            }
+        }
+
+        /* الهواتف المتوسطة (481px - 768px) */
+        @media (min-width: 481px) and (max-width: 768px) {
+            .container {
+                margin: 0;
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            }
+            
+            .cover-page {
+                height: 100vh;
+                padding: 30px 20px;
+            }
+            
+            .cover-title {
+                font-size: 2.8rem;
+                margin-bottom: 2rem;
+            }
+            
+            .cover-subtitle {
+                font-size: 1.2rem;
+                margin-bottom: 2.5rem;
+            }
+            
+            .cover-author {
+                font-size: 1.6rem;
+            }
+            
+            .content-page {
+                padding: 20px;
+            }
+            
+            .page-header {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .examples-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .mind-map-content {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .mind-map-node {
+                min-width: 140px;
+                padding: 12px 20px;
+            }
+            
+            .grammar-table {
+                font-size: 0.85rem;
+            }
+            
+            .cover-decoration {
+                width: 160px;
+                height: 160px;
+                top: 8%;
+                right: 8%;
+            }
+        }
+
+        /* التابلت الصغير (769px - 1024px) */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .container {
+                max-width: 95%;
+                margin: 20px auto;
+            }
+            
+            .cover-page {
+                height: 100vh;
+                padding: 40px 30px;
+            }
+            
+            .cover-title {
+                font-size: 3.2rem;
+            }
+            
+            .cover-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .cover-author {
+                font-size: 1.8rem;
+            }
+            
+            .content-page {
+                padding: 30px;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .examples-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+            
+            .mind-map-content {
+                justify-content: space-around;
+                gap: 20px;
+            }
+            
+            .mind-map-node {
+                min-width: 160px;
+                padding: 15px 25px;
+            }
+            
+            .grammar-table {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* أجهزة الكمبيوتر الصغيرة (1025px - 1366px) */
+        @media (min-width: 1025px) and (max-width: 1366px) {
+            .container {
+                max-width: 1000px;
+                margin: 30px auto;
+            }
+            
+            .cover-page {
+                height: 100vh;
+                padding: 50px 40px;
+            }
+            
+            .cover-title {
+                font-size: 3.5rem;
+            }
+            
+            .cover-subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .cover-author {
+                font-size: 2rem;
+            }
+            
+            .content-page {
+                padding: 40px;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .examples-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px;
+            }
+            
+            .mind-map-node {
+                min-width: 180px;
+                padding: 15px 30px;
+            }
+        }
+
+        /* الشاشات الكبيرة (أكبر من 1366px) */
+        @media (min-width: 1367px) {
+            .container {
+                max-width: 1200px;
+                margin: 40px auto;
+            }
+            
+            .cover-page {
+                height: 100vh;
+                padding: 60px 50px;
+            }
+            
+            .cover-title {
+                font-size: 4rem;
+            }
+            
+            .cover-subtitle {
+                font-size: 1.5rem;
+            }
+            
+            .cover-author {
+                font-size: 2rem;
+            }
+            
+            .content-page {
+                padding: 50px;
+            }
+            
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .examples-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 30px;
+            }
+            
+            .mind-map-node {
+                min-width: 200px;
+                padding: 18px 35px;
+            }
+        }
+
+        /* الشاشات فائقة العرض (أكبر من 1920px) */
+        @media (min-width: 1921px) {
+            .container {
+                max-width: 1400px;
+            }
+            
+            .cover-title {
+                font-size: 4.5rem;
+            }
+            
+            .cover-subtitle {
+                font-size: 1.6rem;
+            }
+            
+            .page-title {
+                font-size: 2.8rem;
+            }
+            
+            .content-page {
+                padding: 60px;
+            }
+        }
+
+        /* التوجه الأفقي للهواتف */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .cover-page {
+                height: 100vh;
+                padding: 20px;
+            }
+            
+            .cover-title {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+            
+            .cover-subtitle {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .cover-author {
+                font-size: 1.3rem;
+            }
+            
+            .content-page {
+                padding: 20px;
+            }
+            
+            .page-header {
+                margin-bottom: 20px;
+            }
+            
+            .mind-map-content {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .mind-map-node {
+                min-width: 120px;
+                padding: 8px 15px;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* طباعة */
+        @media print {
+            .container {
+                box-shadow: none;
+                max-width: 100%;
+                margin: 0;
+            }
+            
+            .content-page {
+                page-break-after: always;
+                min-height: auto;
+                padding: 20mm;
+            }
+            
+            .cover-page {
+                min-height: 100vh;
+                page-break-after: always;
+            }
+            
+            .page-header {
+                border-bottom: 2px solid #2E86AB;
+            }
+            
+            .cover-decoration {
+                display: none;
+            }
+            
+            /* إخفاء العناصر التفاعلية عند الطباعة */
+            button {
+                display: none !important;
+            }
+        }
+
+        /* تحسينات إضافية للأجهزة اللمسية */
+        @media (hover: none) and (pointer: coarse) {
+            .example-card:hover,
+            .mind-map-node:hover {
+                transform: none;
+            }
+            
+            .example-card:active,
+            .mind-map-node:active {
+                transform: scale(0.98);
+            }
+            
+            /* زيادة حجم المناطق القابلة للنقر */
+            button {
+                min-height: 44px;
+                min-width: 44px;
+            }
+        }
+
+        /* تحسينات للشاشات عالية الكثافة */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .cover-title,
+            .page-title {
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+        }
+
+        @media print {
+            .container {
+                box-shadow: none;
+            }
+            
+            .content-page {
+                page-break-after: always;
+            }
+        }
+
+        /* تحسينات إضافية */
+        .icon {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: #F18F01;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .flow-chart {
+            display: flow-root;
+            justify-content: space-between;
+            align-items: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+        }
+
+        .flow-item {
+            background: white;
+            border: 2px solid #2E86AB;
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            flex: 1;
+            margin: 0 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .flow-arrow {
+            font-size: 2rem;
+            color: #A23B72;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- صفحة الغلاف -->
+        <div class="cover-page">
+            <div class="cover-decoration"></div>
+            <h1 class="cover-title">بصائر النحو في اللغة العربية</h1>
+            <p class="cover-subtitle">دليل شامل لقواعد اللغة العربية</p>
+            <p style="font-size: 1.2rem; opacity: 0.8; z-index: 1;">إعداد وتصميم </p>
+            <h2 class="cover-author">بدر عمران</h2>
+            
+        </div>
+
+
+        <!-- فهرس المحتويات -->
+        <div class="content-page">
+            <div class="page-header">
+                <h1 class="page-title">فهرس المحتويات</h1>
+                <div class="page-number">2</div>
+            </div>
+
+            <div class="info-box">
+                <p style="font-size: 1.2rem; text-align: center; color: #2E86AB; font-weight: 600;">
+                    دوسية تأسيسية شاملة في اللغة العربية تحتوي على المواضيع المهمة التالية:
+                </p>
+            </div>
+
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="example-title">الكلام وما يتألف منه</div>
+                    <div class="icon">1</div>
+                    <p>تعريف الكلمة وأقسام الكلام الثلاثة</p>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title">الجمل في اللغة العربية</div>
+                    <div class="icon">2</div>
+                    <p>الجملة الاسمية والجملة الفعلية</p>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title">الاسم المجرور</div>
+                    <div class="icon">3</div>
+                    <p>حروف الجر والأسماء المجرورة</p>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title">المثنى</div>
+                    <div class="icon">4</div>
+                    <p>تثنية الأسماء وعلامات إعرابها</p>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title">جمع المذكر السالم</div>
+                    <div class="icon">5</div>
+                    <p>جمع الأسماء المذكرة العاقلة</p>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title">جمع المؤنث السالم</div>
+                    <div class="icon">6</div>
+                    <p>جمع الأسماء المؤنثة</p>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title">جمع التكسير</div>
+                    <div class="icon">7</div>
+                    <p>الجموع التي تتغير فيها صورة المفرد</p>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title">المضاف إليه</div>
+                    <div class="icon">8</div>
+                    <p>الإضافة في اللغة العربية</p>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title">كان وأخواتها</div>
+                    <div class="icon">9</div>
+                    <p>الأفعال الناسخة وعملها</p>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title">إن وأخواتها</div>
+                    <div class="icon">10</div>
+                    <p>الحروف الناسخة وعملها</p>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title">العطف</div>
+                    <div class="icon">11</div>
+                    <p>حروف العطف وأحكامها</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <p style="text-align: center; font-size: 1.1rem; font-weight: 600;">
+                    هذه الدوسية مصممة لتكون مرجعاً شاملاً وسهل الفهم لطلاب اللغة العربية في جميع المراحل التعليمية
+                </p>
+            </div>
+        </div>
+
+
+        <!-- الفصل الأول: الكلام وما يتألف منه -->
+        <div class="content-page">
+            <div class="page-header">
+                <h1 class="page-title">الكلام وما يتألف منه</h1>
+                <div class="page-number">3</div>
+            </div>
+
+            <div class="definition">
+                <div class="definition-title">تعريف الكلمة</div>
+                <p>الكلمة هي: اللفظة الدالة على معنى مفيد.</p>
+            </div>
+
+            <div class="mind-map">
+                <div class="mind-map-title">أقسام الكلام</div>
+                <div class="mind-map-content">
+                    <div class="mind-map-node">اسم</div>
+                    <div class="flow-arrow">←</div>
+                    <div class="mind-map-node">فعل</div>
+                    <div class="flow-arrow">←</div>
+                    <div class="mind-map-node">حرف</div>
+                </div>
+            </div>
+
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="example-title">الاسم</div>
+                    <p><strong>كلمة تدل على معنى في نفسها غير مقترنة بزمن</strong></p>
+                    <div class="arabic-text">أحمد - نار - كتاب</div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title">الفعل</div>
+                    <p><strong>كلمة تدل على معنى في نفسها مقترنة بزمن</strong></p>
+                    <div class="arabic-text">كتب - يكتب - اكتب</div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title">الحرف</div>
+                    <p><strong>كلمة تدل على معنى في غيرها غير مقترنة بزمن</strong></p>
+                    <div class="arabic-text">في - على - من - إلى</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">كيف نميز الاسم؟</div>
+                <div class="highlight-box">
+                    <p>الاسم هو العنصر الوحيد من عناصر الكلام الذي يقبل:</p>
+                    <div class="flow-chart">
+                        <div class="flow-item">أل التعريف<br><span style="color: #F18F01;">الكتاب</span></div>
+                        <div class="flow-item">التنوين<br><span style="color: #F18F01;">كتابٌ</span></div>
+                        <div class="flow-item">حرف الجر<br><span style="color: #F18F01;">في الكتاب</span></div>
+                        <div class="flow-item">النداء<br><span style="color: #F18F01;">يا أحمد</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h3 style="color: #A23B72; margin-bottom: 15px;">علامات الاسم</h3>
+                <p><strong>مثال:</strong> نار - النار / نارٌ / في النار / يا نار</p>
+                <p><strong>مثال:</strong> أحمد - الأحمد / أحمدٌ / من أحمد / يا أحمد</p>
+                <p style="color: #C73E1D; font-weight: 600;">إذا كان الاسم يقبلها صحيحاً فهو اسم، وما فشل في قبول أل التعريف والتنوين فليس اسماً.</p>
+            </div>
+
+            <div class="example-box">
+                <h3 style="color: #F18F01; margin-bottom: 15px;">تمرين تطبيقي</h3>
+                <p>صغ لي ثلاث كلمات مع فحص علامات الاسم:</p>
+                <div style="margin-top: 15px; padding: 15px; background: white; border-radius: 10px;">
+                    <p>1. ........................... - ........................... - ...........................</p>
+                    <p>2. ........................... - ........................... - ...........................</p>
+                    <p>3. ........................... - ........................... - ...........................</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- أنواع الأسماء -->
+        <div class="content-page">
+            <div class="page-header">
+                <h1 class="page-title">أنواع الأسماء</h1>
+                <div class="page-number">4</div>
+            </div>
+
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="example-title">الاسم الظاهر</div>
+                    <p>وهو أي اسم يمر علينا سواء كان (عاقل، غير عاقل، مدينة، قرية، ...)</p>
+                    <div class="arabic-text">أحمد، شارع، مستشفى، ليمون، الأردن، أسد...</div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title">اسم الإشارة</div>
+                    <p>وهو اسم يوضع للإشارة لأمر معين</p>
+                    <div class="arabic-text">
+                        <strong>للقريب:</strong> هذه، هذا، هاتان، هذان، هؤلاء<br>
+                        <strong>للبعيد:</strong> ذلك، تلك، أولئك
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title">الاسم الموصول</div>
+                    <p>وهو أن يؤتى به في الجملة للربط</p>
+                    <div class="arabic-text">الذي، التي، اللتان، اللذان، اللواتي، الذين</div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title">الضمير المنفصل</div>
+                    <p>وهو اسم جامد مبني يتم وضعه حتى يدل على:</p>
+                    <div class="arabic-text">
+                        <strong>متكلم:</strong> أنا، نحن<br>
+                        <strong>مخاطب:</strong> أنتَ، أنتِ، أنتما، أنتم، أنتن<br>
+                        <strong>الغائب:</strong> هو، هي، هما، هم، هن
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3 style="color: #2E86AB; margin-bottom: 15px;">الضمير المتصل</h3>
+                <p>وهو اسم جامد مبني يتم إلصاقه بنهاية الكلمة إلصاقاً تاماً (وهو ليس حرفاً أصلياً) فيصبح جزءاً منها، مثل:</p>
+                
+                <div class="flow-chart">
+                    <div class="flow-item">
+                        <strong>الكاف:</strong><br>
+                        كتاب ← كتابك<br>
+                        <small>(الكلمة أصلها كتاب وتم إضافة الكاف في النهاية ليدل على الملكية)</small>
+                    </div>
+                    <div class="flow-item">
+                        <strong>الهاء:</strong><br>
+                        قلم ← قلمه<br>
+                        <small>(الكلمة أصلها قلم وتم إضافة الهاء ليدل على الملكية)</small>
+                    </div>
+                </div>
+
+                <div class="info-box" style="margin-top: 20px;">
+                    <p><strong>ضمائر متصلة بالفعل فقط:</strong> تاء الفاعل، ألف الاثنين، واو الجماعة، نون النسوة، ياء المخاطبة</p>
+                    <p><strong>ضمائر متصلة بجميع أقسام الكلام:</strong> الهاء والكاف (عكس الضمائر السابقة)</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- الفعل وأنواعه -->
+        <div class="content-page">
+            <div class="page-header">
+                <h1 class="page-title">الفعل وأنواعه</h1>
+                <div class="page-number">5</div>
+            </div>
+
+            <div class="definition">
+                <div class="definition-title">تعريف الفعل</div>
+                <p>وهي كلمة تدل على زمن أو حركة، مرتبطة بزمن.</p>
+            </div>
+
+            <div class="info-box">
+                <p>يلعب: كلمة ارتبطت بحركة ونشاط وهو أمر مستمر، هذا الطفل يمسك الكرة ويلعب بها ويحركها، كل هذه الحركات تم اختصارها بكلمة واحدة فقط (يلعب).</p>
+                <p><strong>فالفعل هو كلمة تدل على حركة وله زمن معين،</strong> فإما أن يخبرنا عن حدث حدث في الزمن الماضي وانتهى وما زال يحدث الآن نريد أن نخبر عنه أو سيحدث في المستقبل أو أنني آمرك أن تفعل شيئاً ما ويجب أن تفعله مجبراً.</p>
+            </div>
+
+            <div class="mind-map">
+                <div class="mind-map-title">أنواع الفعل</div>
+                <div class="mind-map-content">
+                    <div class="mind-map-node" style="background: linear-gradient(135deg, #F18F01, #C73E1D);">الفعل الماضي</div>
+                    <div class="mind-map-node" style="background: linear-gradient(135deg, #2E86AB, #2fbc59);">الفعل المضارع</div>
+                    <div class="mind-map-node" style="background: linear-gradient(135deg, #A23B72, #C73E1D);">فعل الأمر</div>
+                </div>
+            </div>
+
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="example-title" style="color: #F18F01;">الفعل الماضي</div>
+                    <p>كلمة تدل على حدث مقترن بزمن ماضٍ (حصل وانتهى)</p>
+                    <div class="highlight-box">
+                        <p><strong>كيف نميز الفعل الماضي من باقي الأفعال؟</strong></p>
+                        <p>نُدخل على الفعل تاء متحركة (تَ، تُ، تِ)</p>
+                        <div class="arabic-text">شربَ + تُ ← شربتُ ✓ (معناها صحيح وأعطت معنى أن الحدث انتهى في زمنٍ ماضٍ وانتهى)</div>
+                        <div class="arabic-text">نلعب + تَ ← نلعبتَ ✗ (معناها غير صحيح وغير مفهوم فالفعل هذا ليس ماضياً)</div>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title" style="color: #2E86AB;">الفعل المضارع</div>
+                    <p>كلمة تدل على حدث اقترن بوقت حاضر - الآن - أو سيحدث في المستقبل</p>
+                    <div class="highlight-box">
+                        <p>وهذا الفعل مميز لأنه يبدأ بحروف مميزة تدل على أمر ما:</p>
+                        <div class="flow-chart">
+                            <div class="flow-item">الهمزة<br><span style="color: #2E86AB;">أ</span><br>المتكلم</div>
+                            <div class="flow-item">التاء<br><span style="color: #2E86AB;">ت</span><br>المخاطب</div>
+                            <div class="flow-item">الياء<br><span style="color: #2E86AB;">ي</span><br>الغائب</div>
+                            <div class="flow-item">النون<br><span style="color: #2E86AB;">ن</span><br>الجماعة</div>
+                        </div>
+                        <div class="arabic-text">
+                            أشرب، ألعب، آكل (أنا)<br>
+                            تشرب، تلعب، تأكل (أنت/أنتِ)<br>
+                            يشرب، يلعب، يأكل (هو)<br>
+                            نشرب، نلعب، نأكل (نحن)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title" style="color: #A23B72;">فعل الأمر</div>
+                    <p>كلمة تدل على حدث أمر وإجبار (يجب عليك القيام بهذا الأمر)</p>
+                    <div class="arabic-text">اكتُب، اشرب، توضأ، صلِّ</div>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <p><strong>ملاحظة مهمة:</strong> نلاحظ الفرق بين الفعل الماضي والمضارع أن المضارع يزيد عن الماضي بحرف، وهذا الحرف يسمى حرف المضارعة ويأتي ليميز المضارع من غيره.</p>
+            </div>
+        </div>
+
+
+        <!-- الحرف وأنواعه -->
+        <div class="content-page">
+            <div class="page-header">
+                <h1 class="page-title">الحرف وأنواعه</h1>
+                <div class="page-number">6</div>
+            </div>
+
+            <div class="definition">
+                <div class="definition-title">تعريف الحرف</div>
+                <p>كلمة تدل على معنى في غيرها غير مقترنة بزمن.</p>
+            </div>
+
+            <div class="section">
+                <div class="section-title">أنواع الحروف</div>
+                
+                <div class="examples-grid">
+                    <div class="example-card">
+                        <div class="example-title" style="color: #2E86AB;">حروف الجر</div>
+                        <div class="arabic-text">من، إلى، عن، على، في، ب، ك، ل</div>
+                        <p><small>(تقترن بالأسماء فقط مثل: على السطح، كالقمر، في المسجد)</small></p>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-title" style="color: #A23B72;">حروف العطف</div>
+                        <div class="arabic-text">و، أو، ثم، بل، ف، لكن، أم</div>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-title" style="color: #F18F01;">حروف النصب</div>
+                        <div class="arabic-text">أن، لن، كي، حتى، لام التعليل</div>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-title" style="color: #C73E1D;">حروف الجزم</div>
+                        <div class="arabic-text">لم، لمّا، لام الأمر، لا الناهية</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mind-map" style="margin-top: 40px;">
+                <div class="mind-map-title">الخريطة الذهنية للكلمة</div>
+                <div style="display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 30px;">
+                    <div class="mind-map-node" style="font-size: 1.5rem; padding: 20px 40px;">الكلمة</div>
+                    
+                    <div style="display: flex; justify-content: space-around; width: 100%; gap: 20px;">
+                        <div style="text-align: center;">
+                            <div class="mind-map-node" style="background: linear-gradient(135deg, #2E86AB, #A23B72);">اسم</div>
+                            <div style="margin-top: 15px; font-size: 0.9rem;">
+                                <div style="background: rgba(46, 134, 171, 0.1); padding: 10px; border-radius: 10px; margin: 5px 0;">ظاهر</div>
+                                <div style="background: rgba(46, 134, 171, 0.1); padding: 10px; border-radius: 10px; margin: 5px 0;">إشارة</div>
+                                <div style="background: rgba(46, 134, 171, 0.1); padding: 10px; border-radius: 10px; margin: 5px 0;">موصول</div>
+                                <div style="background: rgba(46, 134, 171, 0.1); padding: 10px; border-radius: 10px; margin: 5px 0;">ضمير منفصل</div>
+                                <div style="background: rgba(46, 134, 171, 0.1); padding: 10px; border-radius: 10px; margin: 5px 0;">ضمير متصل</div>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center;">
+                            <div class="mind-map-node" style="background: linear-gradient(135deg, #F18F01, #C73E1D);">فعل</div>
+                            <div style="margin-top: 15px; font-size: 0.9rem;">
+                                <div style="background: rgba(241, 143, 1, 0.1); padding: 10px; border-radius: 10px; margin: 5px 0;">ماضي</div>
+                                <div style="background: rgba(241, 143, 1, 0.1); padding: 10px; border-radius: 10px; margin: 5px 0;">مضارع</div>
+                                <div style="background: rgba(241, 143, 1, 0.1); padding: 10px; border-radius: 10px; margin: 5px 0;">أمر</div>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center;">
+                            <div class="mind-map-node" style="background: linear-gradient(135deg, #A23B72, #C73E1D);">حرف</div>
+                            <div style="margin-top: 15px; font-size: 0.9rem;">
+                                <div style="background: rgba(162, 59, 114, 0.1); padding: 10px; border-radius: 10px; margin: 5px 0;">جر</div>
+                                <div style="background: rgba(162, 59, 114, 0.1); padding: 10px; border-radius: 10px; margin: 5px 0;">عطف</div>
+                                <div style="background: rgba(162, 59, 114, 0.1); padding: 10px; border-radius: 10px; margin: 5px 0;">نصب</div>
+                                <div style="background: rgba(162, 59, 114, 0.1); padding: 10px; border-radius: 10px; margin: 5px 0;">جزم</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="example-box">
+                <h3 style="color: #F18F01; margin-bottom: 15px;">تمرين تطبيقي</h3>
+                <p>صنف الكلمات الموجودة في الآية التالية إلى اسم وفعل وحرف، وضعهم في جدول:</p>
+                <div class="arabic-text" style="font-size: 1.3rem; margin: 20px 0;">
+                    "اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ"
+                </div>
+                <table class="grammar-table">
+                    <thead>
+                        <tr>
+                            <th>اسم</th>
+                            <th>فعل</th>
+                            <th>حرف</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="height: 100px;"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <!-- الجمل في اللغة العربية -->
+        <div class="content-page">
+            <div class="page-header">
+                <h1 class="page-title">الجمل في اللغة العربية</h1>
+                <div class="page-number">7</div>
+            </div>
+
+            <div class="definition">
+                <div class="definition-title">تعريف الجملة</div>
+                <p>الجملة هي: اجتماع كلمتين فأكثر مسندتين إلى بعضهما ليكونا كلاماً مفيداً وذا معنى.</p>
+                <p>وتُقسم الجمل في العربية حسب أول كلمة ابتدأت بها الجملة، فإذا ابتدأت بـاسم فهي جملة اسمية، وإذا ابتدأت بفعل فهي جملة فعلية.</p>
+            </div>
+
+            <div class="section">
+                <div class="section-title">1. الجملة الاسمية</div>
+                
+                <div class="info-box">
+                    <p><strong>وهي الجملة التي تبدأ بـاسم</strong></p>
+                    <div class="arabic-text">البابُ مفتوحٌ، أحمدُ شجاعٌ، المسجدُ مكتملٌ....</div>
+                    <p>نلاحظ أن الاسم الذي ابتدأت به الجملة آخر حرف فيه مُحرك بالضم (ُ) (عندما يكون الاسم مفرداً) عندما تكون حركة آخر حرف الضم فهذا الاسم يسمى مرفوع</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h3 style="color: #2E86AB; margin-bottom: 15px;">للجملة الاسمية ركنان أساسيان:</h3>
+                    
+                    <div class="flow-chart">
+                        <div class="flow-item">
+                            <strong style="color: #2E86AB;">المبتدأ</strong><br>
+                            سُمي بهذا الاسم لأنه الاسم الذي تبدأ به الجملة، حركته دائماً الضم (في حال الإفراد)، لذلك نقول مرفوع، ويسمى مسند إليه.
+                        </div>
+                        <div class="flow-arrow">←</div>
+                        <div class="flow-item">
+                            <strong style="color: #A23B72;">الخبر</strong><br>
+                            سُمي بهذا الاسم لأننا نخبر به عن المبتدأ، حركته دائماً الضم (في حال الإفراد)، لذلك نقول عنه مرفوع، ويسمى مسند.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h3 style="color: #F18F01; margin-bottom: 15px;">مثال تطبيقي</h3>
+                    <div class="arabic-text" style="font-size: 1.5rem;">المسجدُ جميلٌ</div>
+                    
+                    <div class="flow-chart">
+                        <div class="flow-item">
+                            <strong>المسجدُ</strong><br>
+                            كلمة ابتدأت بها الجملة<br>
+                            فهو المبتدأ
+                        </div>
+                        <div class="flow-arrow">←</div>
+                        <div class="flow-item">
+                            <strong>جميلٌ</strong><br>
+                            ما به المسجد؟ جميل<br>
+                            فأخبرنا عن المسجد أنه جميل<br>
+                            فهو الخبر
+                        </div>
+                    </div>
+
+                    <div class="info-box" style="margin-top: 20px;">
+                        <p><strong>المبتدأ والخبر دائماً مرفوعان</strong></p>
+                        <p>ويتخذان موقع الرفع في الجملة.</p>
+                    </div>
+                </div>
+
+                <div class="grammar-table">
+                    <thead>
+                        <tr>
+                            <th>الإعراب</th>
+                            <th>الكلمة</th>
+                            <th>المثال</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>مبتدأ مرفوع وعلامة رفعه الضمة الظاهرة على آخره</td>
+                            <td>الشبكُ</td>
+                            <td rowspan="2">الشبكُ مكسورٌ</td>
+                        </tr>
+                        <tr>
+                            <td>خبر المبتدأ مرفوع وعلامة رفعه الضمة الظاهرة على آخره</td>
+                            <td>مكسورٌ</td>
+                        </tr>
+                        <tr>
+                            <td>مبتدأ مرفوع وعلامة رفعه الضمة الظاهرة على آخره</td>
+                            <td>البابُ</td>
+                            <td rowspan="2">البابُ مفتوحٌ</td>
+                        </tr>
+                        <tr>
+                            <td>خبر المبتدأ مرفوع وعلامة رفعه الضمة الظاهرة على آخره</td>
+                            <td>مفتوحٌ</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="example-box">
+                <h3 style="color: #F18F01; margin-bottom: 15px;">تمرين تطبيقي</h3>
+                <p>ميز المبتدأ من الخبر في الجمل التالية وأعربهم إعراباً تاماً:</p>
+                <div class="examples-grid">
+                    <div style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                        <div class="arabic-text">القارئُ متقنٌ</div>
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                        <div class="arabic-text">الأزهارُ زينةُ الحدائقِ</div>
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                        <div class="arabic-text">اللاعبُ سريعٌ</div>
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                        <div class="arabic-text">الطفلُ ذكي كأمِّهِ</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- الجملة الفعلية -->
+        <div class="content-page">
+            <div class="page-header">
+                <h1 class="page-title">الجملة الفعلية</h1>
+                <div class="page-number">8</div>
+            </div>
+
+            <div class="definition">
+                <div class="definition-title">الجملة الفعلية</div>
+                <p>هي الجملة التي تبدأ بفعل بغض النظر عن نوع الفعل</p>
+                <div class="arabic-text">يأكل الولد التفاحة، أكل الولد التفاحة، كُل التفاحة يا ولد</div>
+                <p>جميع هذه الجمل هي جمل فعلية</p>
+            </div>
+
+            <div class="mind-map">
+                <div class="mind-map-title">أركان الجملة الفعلية</div>
+                <div class="mind-map-content">
+                    <div class="mind-map-node" style="background: linear-gradient(135deg, #F18F01, #C73E1D);">فعل</div>
+                    <div class="flow-arrow">+</div>
+                    <div class="mind-map-node" style="background: linear-gradient(135deg, #2E86AB, #A23B72);">فاعل</div>
+                    <div class="flow-arrow">+</div>
+                    <div class="mind-map-node" style="background: linear-gradient(135deg, #A23B72, #C73E1D);">مفعول به</div>
+                </div>
+            </div>
+
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="example-title" style="color: #F18F01;">الفعل</div>
+                    <p>كلمة تدل على زمن أو حركة</p>
+                    <p><strong>نسأل عنه بـ (من؟)</strong></p>
+                    <div style="margin-top: 10px;">
+                        <div>تنقسم إلى ماضٍ ومضارع وأمر</div>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title" style="color: #2E86AB;">الفاعل</div>
+                    <p>هو من وقع منه الفعل، هو من قام بالفعل</p>
+                    <p><strong>نسأل عنه بـ (من؟)</strong></p>
+                    <div style="margin-top: 10px;">
+                        <div>كلمة مرتبطة بالفعل</div>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title" style="color: #A23B72;">المفعول به</div>
+                    <p>هو من وقع عليه نشاط الفاعل</p>
+                    <p><strong>نسأل عنه بـ (ماذا؟)</strong></p>
+                    <div style="margin-top: 10px;">
+                        <div>كلمة مرتبطة بالفعل</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3 style="color: #2E86AB; margin-bottom: 15px;">كيف نميز أركان الجملة الفعلية؟</h3>
+                <div class="arabic-text" style="font-size: 1.5rem; margin: 20px 0;">صعد الرجلُ الجبلَ</div>
+                
+                <div class="flow-chart">
+                    <div class="flow-item">
+                        <strong>1. نحدد نوع الفعل</strong><br>
+                        صعد: فعل ماضٍ
+                    </div>
+                    <div class="flow-item">
+                        <strong>2. نسأل عن الفاعل بـ(من؟)</strong><br>
+                        من الذي صعد؟ ... الرجل<br>
+                        الرجل هو الفاعل
+                    </div>
+                    <div class="flow-item">
+                        <strong>3. نسأل عن المفعول به بـ(ماذا؟)</strong><br>
+                        ماذا صعد الرجل؟ ... الجبل<br>
+                        الجبل هو المفعول به
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">إعراب الأفعال</div>
+                
+                <div class="info-box">
+                    <p><strong>تنقسم الأفعال إلى مبنية ومعربة:</strong></p>
+                    <ul style="margin-right: 20px; margin-top: 10px;">
+                        <li><strong>مبنية:</strong> (الماضي والأمر) أي أنها لا تُجزم ولا تُنصب ولا تقبلهما</li>
+                        <li><strong>معربة:</strong> (المضارع) مثل أنها تقبل الجزم والنصب</li>
+                    </ul>
+                </div>
+
+                <div class="examples-grid">
+                    <div class="example-card">
+                        <div class="example-title" style="color: #F18F01;">الفعل الماضي</div>
+                        <p><strong>مبني على الفتح</strong> إذا لم يتصل به ضمير</p>
+                        <div class="arabic-text">أكلَ، لعبَ، ذهبَ</div>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-title" style="color: #A23B72;">فعل الأمر</div>
+                        <p><strong>له حالتان إعرابيتان:</strong></p>
+                        <div style="font-size: 0.9rem; margin-top: 10px;">
+                            <p><strong>1.</strong> يُبنى على السكون إذا كان صحيح الآخر ولم يتصل به ضمير: اكتُبْ، اشربْ، العبْ، كُلْ</p>
+                            <p><strong>2.</strong> يُبنى على حذف حرف العلة إذا كان معتل الآخر: اسعَ، صلِّ، انمُ</p>
+                        </div>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-title" style="color: #2E86AB;">الفعل المضارع</div>
+                        <p><strong>له ثلاث حالات إعرابية:</strong></p>
+                        <div style="font-size: 0.9rem; margin-top: 10px;">
+                            <p><strong>1.</strong> يُرفع بالضمة إذا لم يسبقه حرف نصب أو جزم: يسجدُ، يذهبُ</p>
+                            <p><strong>2.</strong> يُنصب بالفتحة إذا سبقه حرف نصب (أن، لن، كي، حتى، لام التعليل): لن يذهبَ، أن يلعبَ، كي يأكلَ</p>
+                            <p><strong>3.</strong> يُجزم بالسكون إذا سبقه حرف جزم (لم، لمّا، لام الأمر، لا الناهية) وكان صحيح الآخر: لم يذهبْ، لا تأكلْ</p>
+                            <p><strong>4.</strong> يُجزم بحذف حرف العلة إذا كان معتل الآخر: لم يسعَ، لا تنمُ، ليصلِّ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- الفاعل والمفعول به -->
+        <div class="content-page">
+            <div class="page-header">
+                <h1 class="page-title">الفاعل والمفعول به</h1>
+                <div class="page-number">9</div>
+            </div>
+
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="example-title" style="color: #2E86AB;">الفاعل</div>
+                    <p>اسم مرفوع دائماً، أي يأتي مضموم الآخر في حال الإفراد، وهو اسم يأتي ليبين لنا من قام بالفعل، فبالتالي هذا الاسم مضموم الآخر ويسمى مرفوع، فعند الإعراب نقول: فاعل مرفوع وعلامة رفعه الضمة.</p>
+                    <div class="highlight-box">
+                        <p><strong>يأتي الفاعل بأي شكل من أشكال الاسم التي درسناها سابقاً.</strong></p>
+                        <p>قد لا نذكر الفاعل صراحة في الجملة لأننا نعرف من هو ولا نريد ذكره اختصاراً، فحينئذٍ نسميه (ضمير مستتر).</p>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-title" style="color: #A23B72;">المفعول به</div>
+                    <p>اسم منصوب دائماً، أي يأتي مفتوح الآخر في حال الإفراد، وهو اسم يأتي ليبين لنا من وقع عليه الفعل، وهذا الاسم مفتوح الآخر ويسمى منصوب، فعند الإعراب نقول: مفعول به منصوب وعلامة نصبه الفتحة.</p>
+                    <div class="highlight-box">
+                        <p><strong>المفعول به ليس أساسياً في الجملة عكس الفاعل،</strong> الفاعل ركن أساسي في الجملة بينما المفعول به يأتي فضلة ليتمم معنى الجملة.</p>
+                        <p><strong>لا يجوز أن يأتي الفعل بدون فاعل أبداً.</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h3 style="color: #F18F01; margin-bottom: 15px;">قاعدة مهمة</h3>
+                <div class="flow-chart">
+                    <div class="flow-item">
+                        <strong>فعل لازم</strong><br>
+                        (فعل + فاعل)<br>
+                        <div class="arabic-text">نام الطفل، جلس الطالب على المقعد</div>
+                        <p><small>لم نحتج لمفعول به لأن الفعل غير فضولي</small></p>
+                    </div>
+                    <div class="flow-item">
+                        <strong>فعل متعدي</strong><br>
+                        (فعل + فاعل + مفعول به)<br>
+                        <div class="arabic-text">شرح الأستاذ الدرس، خالف الشرطي السائق</div>
+                        <p><small>احتجنا إلى مفعول به ليتم المعنى لأن الفعل فضولي</small></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">أمثلة على إعراب الجملة الفعلية</div>
+                
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">يكتبُ الطالبُ بالقلمِ</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>يكتبُ</td>
+                                <td>فعل مضارع مرفوع وعلامة رفعه الضمة الظاهرة</td>
+                            </tr>
+                            <tr>
+                                <td>الطالبُ</td>
+                                <td>فاعل مرفوع وعلامة رفعه الضمة الظاهرة</td>
+                            </tr>
+                            <tr>
+                                <td>بالقلمِ</td>
+                                <td>حرف جر واسم مجرور (سنتعرف عليه لاحقاً)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">كُل طعاماً</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>كُل</td>
+                                <td>فعل أمر مبني على السكون، والفاعل ضمير مستتر تقديره (أنتَ)</td>
+                            </tr>
+                            <tr>
+                                <td>طعاماً</td>
+                                <td>مفعول به منصوب وعلامة نصبه الفتحة الظاهرة</td>
+                            </tr>
+                            <tr>
+                                <td>الكاف</td>
+                                <td>مضاف إليه (سنتعرف عليه لاحقاً)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">لم يسعَ الرجلُ لإكمال تعليمهِ</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>لم</td>
+                                <td>حرف جزم</td>
+                            </tr>
+                            <tr>
+                                <td>يسعَ</td>
+                                <td>فعل مضارع مجزوم بـ(لم) وعلامة جزمه حذف حرف العلة</td>
+                            </tr>
+                            <tr>
+                                <td>الرجلُ</td>
+                                <td>فاعل مرفوع وعلامة رفعه الضمة الظاهرة</td>
+                            </tr>
+                            <tr>
+                                <td>لإكمال</td>
+                                <td>حرف جر واسم مجرور</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">ركل الطفلُ الكرةَ</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>ركل</td>
+                                <td>فعل ماضٍ مبني على الفتح</td>
+                            </tr>
+                            <tr>
+                                <td>الطفلُ</td>
+                                <td>فاعل مرفوع وعلامة رفعه الضمة الظاهرة</td>
+                            </tr>
+                            <tr>
+                                <td>الكرةَ</td>
+                                <td>مفعول به منصوب وعلامة نصبه الفتحة الظاهرة</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">لن تنمو أشجارُ التفاحِ</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>لن</td>
+                                <td>حرف نصب</td>
+                            </tr>
+                            <tr>
+                                <td>تنموَ</td>
+                                <td>فعل مضارع منصوب بـ(لن) وعلامة نصبه الفتحة الظاهرة</td>
+                            </tr>
+                            <tr>
+                                <td>أشجارُ</td>
+                                <td>فاعل مرفوع وعلامة رفعه الضمة الظاهرة</td>
+                            </tr>
+                            <tr>
+                                <td>التفاحِ</td>
+                                <td>مضاف إليه مجرور</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">اشربِ الدواءَ</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>اشربِ</td>
+                                <td>فعل أمر مبني على السكون، والفاعل ضمير مستتر تقديره (أنتَ)</td>
+                            </tr>
+                            <tr>
+                                <td>الدواءَ</td>
+                                <td>مفعول به منصوب وعلامة نصبه الفتحة الظاهرة</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- خريطة ذهنية للأفعال وتمرين -->
+        <div class="content-page">
+            <div class="page-header">
+                <h1 class="page-title">خريطة ذهنية للأفعال</h1>
+                <div class="page-number">10</div>
+            </div>
+
+            <div class="mind-map" style="margin-bottom: 40px;">
+                <div class="mind-map-title">الفعل الماضي</div>
+                <div style="text-align: center;">
+                    <div class="mind-map-node" style="background: linear-gradient(135deg, #F18F01, #C73E1D); font-size: 1.2rem; margin-bottom: 20px;">مبني على الفتح</div>
+                </div>
+            </div>
+
+            <div class="mind-map" style="margin-bottom: 40px;">
+                <div class="mind-map-title">فعل الأمر</div>
+                <div class="mind-map-content">
+                    <div style="text-align: center;">
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #A23B72, #C73E1D); margin-bottom: 20px;">صحيح الآخر ولم يتصل به ضمير</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #2E86AB, #A23B72);">معتل الآخر</div>
+                    </div>
+                    <div style="margin-top: 20px; display: flex; justify-content: space-around;">
+                        <div style="text-align: center;">
+                            <div style="background: rgba(162, 59, 114, 0.1); padding: 15px; border-radius: 10px;">
+                                <strong>مبني على السكون</strong>
+                            </div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="background: rgba(46, 134, 171, 0.1); padding: 15px; border-radius: 10px;">
+                                <strong>مبني على حذف حرف العلة</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mind-map">
+                <div class="mind-map-title">الفعل المضارع</div>
+                <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+                    <div class="mind-map-node" style="background: linear-gradient(135deg, #2E86AB, #A23B72); font-size: 1.2rem;">مرفوع بالضم</div>
+                </div>
+                <div style="display: flex; justify-content: space-around; margin-bottom: 20px;">
+                    <div class="mind-map-node" style="background: linear-gradient(135deg, #F18F01, #C73E1D);">منصوب بالفتح</div>
+                    <div class="mind-map-node" style="background: linear-gradient(135deg, #A23B72, #C73E1D);">مجزوم بالسكون</div>
+                </div>
+                <div style="text-align: center;">
+                    <div class="mind-map-node" style="background: linear-gradient(135deg, #C73E1D, #A23B72);">مجزوم بحذف حرف العلة</div>
+                </div>
+            </div>
+
+            <div class="example-box">
+                <h3 style="color: #F18F01; margin-bottom: 20px;">تمرين شامل</h3>
+                <p>ميز الجمل التالية (اسمية/فعلية) ثم أعرب أركانها إعراباً تاماً:</p>
+                
+                <div class="examples-grid">
+                    <div style="background: white; padding: 20px; border-radius: 15px; border: 2px solid #2E86AB;">
+                        <div class="arabic-text" style="font-size: 1.2rem; margin-bottom: 10px;">يلعبُ الولدُ في الحديقةِ</div>
+                        <div style="height: 80px; border: 1px dashed #ccc; margin-top: 10px;"></div>
+                    </div>
+
+                    <div style="background: white; padding: 20px; border-radius: 15px; border: 2px solid #A23B72;">
+                        <div class="arabic-text" style="font-size: 1.2rem; margin-bottom: 10px;">شربَ الطفلُ الحساءَ على الطاولةِ</div>
+                        <div style="height: 80px; border: 1px dashed #ccc; margin-top: 10px;"></div>
+                    </div>
+
+                    <div style="background: white; padding: 20px; border-radius: 15px; border: 2px solid #F18F01;">
+                        <div class="arabic-text" style="font-size: 1.2rem; margin-bottom: 10px;">المسجدُ القريبُ</div>
+                        <div style="height: 80px; border: 1px dashed #ccc; margin-top: 10px;"></div>
+                    </div>
+
+                    <div style="background: white; padding: 20px; border-radius: 15px; border: 2px solid #C73E1D;">
+                        <div class="arabic-text" style="font-size: 1.2rem; margin-bottom: 10px;">صلِّ صلاةَ الفجرِ جماعةً</div>
+                        <div style="height: 80px; border: 1px dashed #ccc; margin-top: 10px;"></div>
+                    </div>
+
+                    <div style="background: white; padding: 20px; border-radius: 15px; border: 2px solid #2E86AB;">
+                        <div class="arabic-text" style="font-size: 1.2rem; margin-bottom: 10px;">لم أذهبْ لبيتِ خالتي</div>
+                        <div style="height: 80px; border: 1px dashed #ccc; margin-top: 10px;"></div>
+                    </div>
+
+                    <div style="background: white; padding: 20px; border-radius: 15px; border: 2px solid #A23B72;">
+                        <div class="arabic-text" style="font-size: 1.2rem; margin-bottom: 10px;">الغيومُ ممطرةٌ</div>
+                        <div style="height: 80px; border: 1px dashed #ccc; margin-top: 10px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- الاسم المجرور -->
+        <div class="content-page">
+            <div class="page-header">
+                <h1 class="page-title">الاسم المجرور</h1>
+                <div class="page-number">11</div>
+            </div>
+
+            <div class="definition">
+                <div class="definition-title">تعريف الاسم المجرور</div>
+                <p>هو اسم يلي حرف الجر دائماً ولا يفارقه، ويكون دائماً في حالة الجر، وعلامة إعرابه الكسرة في حال الإفراد.</p>
+            </div>
+
+            <div class="mind-map">
+                <div class="mind-map-title">حروف الجر + اسم مجرور</div>
+                <div class="mind-map-content">
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 20px;">
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #3197c3, #0135f1);">من</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #29c2b0, #a901f1);">إلى</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #0135f1, #29c2b0);">عن</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #29c2b0, #6b008b);">على</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #00296b, #29c2b0);">في</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #29c2b0, #6b008b);">الباء</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #0135f1, #29c2b0);">الكاف</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #29c2b0, #6b008b);">اللام</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">أمثلة على الإعراب</div>
+                
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">العصفورُ على الشجرةِ</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>على</td>
+                                <td>حرف جر</td>
+                            </tr>
+                            <tr>
+                                <td>الشجرةِ</td>
+                                <td>اسم مجرور وعلامة جره الكسرة الظاهرة</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">كتبَ الطالبُ بالقلمِ</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>الباء</td>
+                                <td>حرف جر</td>
+                            </tr>
+                            <tr>
+                                <td>القلمِ</td>
+                                <td>اسم مجرور وعلامة جره الكسرة الظاهرة</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="example-box">
+                <h3 style="color: #F18F01; margin-bottom: 15px;">تمرين تطبيقي</h3>
+                <p>استخرج حرف الجر والاسم المجرور من الجمل التالية وأعربهم إعراباً تاماً:</p>
+                
+                <div class="examples-grid">
+                    <div style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                        <div class="arabic-text">الملابسُ في الغسّالةِ</div>
+                        <div style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px;">
+                            <p><strong>حرف الجر:</strong> ........................</p>
+                            <p><strong>الاسم المجرور:</strong> ........................</p>
+                            <p><strong>الإعراب:</strong> ........................</p>
+                        </div>
+                    </div>
+
+                    <div style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                        <div class="arabic-text">سافر أبي إلى الحجِّ</div>
+                        <div style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px;">
+                            <p><strong>حرف الجر:</strong> ........................</p>
+                            <p><strong>الاسم المجرور:</strong> ........................</p>
+                            <p><strong>الإعراب:</strong> ........................</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- المثنى -->
+        <div class="content-page">
+            <div class="page-header">
+                <h1 class="page-title">المثنى</h1>
+                <div class="page-number">12</div>
+            </div>
+
+            <div class="definition">
+                <div class="definition-title">تعريف المثنى</div>
+                <p>هو اسم يدل على عدد اثنين ويستخدم لاختصار الجملة، فبدل أن أقول: جلس مع معلم ومعلم، أقول: جلس مع معلمَين.</p>
+                <p><strong>المثنى هو أي اسم يدل على اثنين سواء كانا عاقلين أو غير عاقلين.</strong></p>
+                <p>يتم تثنية هذه الأسماء عن طريق إضافة (ان/ين) في نهاية الاسم المفرد.</p>
+            </div>
+
+            <div class="highlight-box">
+                <h3 style="color: #2E86AB; margin-bottom: 15px;">كيف نميز المثنى؟</h3>
+                <div class="flow-chart">
+                    <div class="flow-item">
+                        <strong>1.</strong> أن تكون الكلمة اسم
+                    </div>
+                    <div class="flow-item">
+                        <strong>2.</strong> أن تدل على اثنين
+                    </div>
+                    <div class="flow-item">
+                        <strong>3.</strong> تنتهي بـ (ان) إذا كان الاسم مرفوعاً
+                    </div>
+                    <div class="flow-item">
+                        <strong>4.</strong> تنتهي بـ (ين) إذا كان الاسم منصوباً أو مجروراً
+                    </div>
+                </div>
+                <div class="info-box" style="margin-top: 20px;">
+                    <p><strong>يُشترط في نون المثنى أن تكون مكسورة:</strong> (طالبان، طالبَين)</p>
+                </div>
+            </div>
+
+            <div class="mind-map">
+                <div class="mind-map-title">إعراب المثنى</div>
+                <div class="mind-map-content">
+                    <div style="display: flex; justify-content: space-around; align-items: center;">
+                        <div style="text-align: center;">
+                            <div class="mind-map-node" style="background: linear-gradient(135deg, #2E86AB, #A23B72);">(ان)</div>
+                            <div style="margin-top: 15px; background: rgba(46, 134, 171, 0.1); padding: 15px; border-radius: 10px;">
+                                <strong>في حالة الرفع</strong><br>
+                                (مبتدأ/خبر/فاعل)
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <div class="mind-map-node" style="background: linear-gradient(135deg, #F18F01, #C73E1D);">(ين)</div>
+                            <div style="margin-top: 15px; background: rgba(241, 143, 1, 0.1); padding: 15px; border-radius: 10px;">
+                                <strong>في حالة النصب والجر</strong><br>
+                                (مفعول به/اسم مجرور/مضاف إليه)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">أمثلة على الإعراب</div>
+                
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">الطالبتان مهذبتان</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>الطالبتان</td>
+                                <td>مبتدأ مرفوع وعلامة رفعه الألف لأنه مثنى</td>
+                            </tr>
+                            <tr>
+                                <td>مهذبتان</td>
+                                <td>خبر المبتدأ مرفوع وعلامة رفعه الألف لأنه مثنى</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">ألعبُ الكرة مع الصديقَين</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>الصديقَين</td>
+                                <td>اسم مجرور وعلامة جره الياء لأنه مثنى</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">شاهدتُ الرجلَين بالشارعِ</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>الرجلَين</td>
+                                <td>مفعول به منصوب وعلامة نصبه الياء لأنه مثنى</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h3 style="color: #A23B72; margin-bottom: 15px;">سؤال: هل كلمة (يأكلان) في المثال السابق مثنى؟</h3>
+                <p><strong>لا،</strong> لأن (يأكلان) ليست اسم والمثنى للأسماء فقط.</p>
+            </div>
+
+            <div class="example-box">
+                <h3 style="color: #F18F01; margin-bottom: 15px;">تمرين تطبيقي</h3>
+                <p>استخرج المثنى من الجمل التالية وأعربه إعراباً تاماً:</p>
+                
+                <div class="examples-grid">
+                    <div style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                        <div class="arabic-text">قدتُ سيارتين.</div>
+                        <div style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px; height: 60px;"></div>
+                    </div>
+
+                    <div style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                        <div class="arabic-text">أمسك الشرطيان بالمجرمِ.</div>
+                        <div style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px; height: 60px;"></div>
+                    </div>
+
+                    <div style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                        <div class="arabic-text">الطفلان يأكلان الحلوى.</div>
+                        <div style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px; height: 60px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- جمع المذكر السالم -->
+        <div class="content-page">
+            <div class="page-header">
+                <h1 class="page-title">جمع المذكر السالم</h1>
+                <div class="page-number">13</div>
+            </div>
+
+            <div class="definition">
+                <div class="definition-title">تعريف جمع المذكر السالم</div>
+                <p>هو اسم يدل على 3 فأكثر ويستخدم لاختصار الجملة، فبدل أن أقول: "درست عن معلم ومعلم ومعلم ومعلم"، أقول: "درست عند المعلمين".</p>
+                <p><strong>فجمع المذكر السالم اسم يدل على 3 فأكثر للعاقل فقط.</strong></p>
+                <p>سُمي سالماً لأن حروفه سلمت من التغيير والتبديل.</p>
+                <p>يُشترط في هذا الجمع أن يكون المفرد مذكراً.</p>
+            </div>
+
+            <div class="mind-map">
+                <div class="mind-map-title">تكوين جمع المذكر السالم</div>
+                <div class="mind-map-content">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <p style="font-size: 1.2rem; font-weight: 600;">يتم جمع هذه الأسماء عن طريق إضافة (ون/ين) في نهاية الاسم المفرد المذكر</p>
+                    </div>
+                    <div style="display: flex; justify-content: space-around; align-items: center;">
+                        <div style="text-align: center;">
+                            <div class="mind-map-node" style="background: linear-gradient(135deg, #2E86AB, #A23B72);">(ون)</div>
+                            <div style="margin-top: 15px; background: rgba(46, 134, 171, 0.1); padding: 15px; border-radius: 10px;">
+                                <strong>في حالة الرفع</strong><br>
+                                (مبتدأ/خبر/فاعل)
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <div class="mind-map-node" style="background: linear-gradient(135deg, #F18F01, #C73E1D);">(ين)</div>
+                            <div style="margin-top: 15px; background: rgba(241, 143, 1, 0.1); padding: 15px; border-radius: 10px;">
+                                <strong>في حالة النصب والجر</strong><br>
+                                (مفعول به/اسم مجرور/مضاف إليه)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3 style="color: #2E86AB; margin-bottom: 15px;">كيف نميز جمع المذكر السالم؟</h3>
+                <div class="flow-chart">
+                    <div class="flow-item">
+                        <strong>1.</strong> أن تكون الكلمة اسم
+                    </div>
+                    <div class="flow-item">
+                        <strong>2.</strong> أن تدل على 3 فأكثر
+                    </div>
+                    <div class="flow-item">
+                        <strong>3.</strong> أن تنتهي بـ (ون) إذا كان الاسم مرفوعاً
+                    </div>
+                    <div class="flow-item">
+                        <strong>4.</strong> أن تنتهي بـ (ين) إذا كان الاسم منصوباً أو مجروراً
+                    </div>
+                </div>
+                <div class="info-box" style="margin-top: 20px;">
+                    <p><strong>يُشترط في جمع المذكر السالم أن تكون النون المضافة مع الواو أو الياء مفتوحة:</strong> (معلمون/معلمَين)</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">أمثلة على الإعراب</div>
+                
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">انتهى المعلمون من شرح الكتاب</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>المعلمون</td>
+                                <td>فاعل مرفوع وعلامة رفعه الواو لأنه جمع مذكر سالم</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">شاهدتُ المهندسين</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>المهندسين</td>
+                                <td>مفعول به منصوب وعلامة نصبه الياء لأنه جمع مذكر سالم</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">مررتُ بالمسلمين</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>المسلمين</td>
+                                <td>اسم مجرور وعلامة جره الياء لأنه جمع مذكر سالم</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="mind-map">
+                <div class="mind-map-title">إعراب جمع المذكر السالم</div>
+                <div class="mind-map-content">
+                    <div style="display: flex; justify-content: space-around; align-items: center;">
+                        <div style="text-align: center;">
+                            <div class="mind-map-node" style="background: linear-gradient(135deg, #2E86AB, #A23B72);">(ون)</div>
+                            <div style="margin-top: 15px; background: rgba(46, 134, 171, 0.1); padding: 15px; border-radius: 10px;">
+                                <strong>مرفوع</strong><br>
+                                مبتدأ/خبر/فاعل
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <div class="mind-map-node" style="background: linear-gradient(135deg, #F18F01, #C73E1D);">(ين)</div>
+                            <div style="margin-top: 15px; background: rgba(241, 143, 1, 0.1); padding: 15px; border-radius: 10px;">
+                                <strong>منصوب / مجرور</strong><br>
+                                مفعول به/اسم مجرور
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="example-box">
+                <h3 style="color: #F18F01; margin-bottom: 15px;">تمرين تطبيقي</h3>
+                <p>صُغ ثلاث جمل في الحالات الإعرابية الثلاث تحتوي على جمع المذكر السالم مع إعرابه تاماً:</p>
+                
+                <div style="background: white; padding: 20px; border-radius: 15px; border: 2px solid #2E86AB; margin: 15px 0;">
+                    <p><strong>جملة تحتوي على جمع مذكر سالم مرفوع:</strong></p>
+                    <div style="height: 60px; border: 1px dashed #ccc; margin-top: 10px;"></div>
+                </div>
+
+                <div style="background: white; padding: 20px; border-radius: 15px; border: 2px solid #F18F01; margin: 15px 0;">
+                    <p><strong>جملة تحتوي على جمع مذكر سالم منصوب:</strong></p>
+                    <div style="height: 60px; border: 1px dashed #ccc; margin-top: 10px;"></div>
+                </div>
+
+                <div style="background: white; padding: 20px; border-radius: 15px; border: 2px solid #A23B72; margin: 15px 0;">
+                    <p><strong>جملة تحتوي على جمع مذكر سالم مجرور:</strong></p>
+                    <div style="height: 60px; border: 1px dashed #ccc; margin-top: 10px;"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- جمع المؤنث السالم -->
+        <div class="content-page">
+            <div class="page-header">
+                <h1 class="page-title">جمع المؤنث السالم</h1>
+                <div class="page-number">14</div>
+            </div>
+
+            <div class="definition">
+                <div class="definition-title">تعريف جمع المؤنث السالم</div>
+                <p>هو اسم يدل على 3 فأكثر ويستخدم لاختصار الجملة، فبدل أن أقول: "درست عند معلمة ومعلمة ومعلمة ومعلمة"، أقول: "درست عند المعلمات".</p>
+                <p><strong>فجمع المؤنث السالم اسم يدل على 3 فأكثر للمؤنث فقط.</strong></p>
+                <p>سُمي سالماً لأن حروفه سلمت من التغيير والتبديل.</p>
+                <p>يُشترط في هذا الجمع أن يكون المفرد مؤنثاً.</p>
+            </div>
+
+            <div class="mind-map">
+                <div class="mind-map-title">تكوين جمع المؤنث السالم</div>
+                <div class="mind-map-content">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <p style="font-size: 1.2rem; font-weight: 600;">يتم جمع هذه الأسماء عن طريق إضافة (ات) في نهاية الاسم المفرد المؤنث</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #A23B72, #F18F01); font-size: 1.5rem; padding: 20px 40px;">(ات)</div>
+                        <div style="margin-top: 20px; background: rgba(162, 59, 114, 0.1); padding: 20px; border-radius: 15px;">
+                            <strong>في جميع الحالات الإعرابية</strong><br>
+                            (رفع/نصب/جر)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3 style="color: #2E86AB; margin-bottom: 15px;">كيف نميز جمع المؤنث السالم؟</h3>
+                <div class="flow-chart">
+                    <div class="flow-item">
+                        <strong>1.</strong> أن تكون الكلمة اسم
+                    </div>
+                    <div class="flow-item">
+                        <strong>2.</strong> أن تدل على 3 فأكثر
+                    </div>
+                    <div class="flow-item">
+                        <strong>3.</strong> أن تنتهي بـ (ات)
+                    </div>
+                    <div class="flow-item">
+                        <strong>4.</strong> أن يكون المفرد مؤنثاً
+                    </div>
+                </div>
+            </div>
+
+            <div class="mind-map">
+                <div class="mind-map-title">إعراب جمع المؤنث السالم</div>
+                <div class="mind-map-content">
+                    <div style="display: flex; justify-content: space-around; align-items: center;">
+                        <div style="text-align: center;">
+                            <div class="mind-map-node" style="background: linear-gradient(135deg, #2E86AB, #A23B72);">الضمة</div>
+                            <div style="margin-top: 15px; background: rgba(46, 134, 171, 0.1); padding: 15px; border-radius: 10px;">
+                                <strong>في حالة الرفع</strong><br>
+                                (مبتدأ/خبر/فاعل)
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <div class="mind-map-node" style="background: linear-gradient(135deg, #F18F01, #C73E1D);">الكسرة</div>
+                            <div style="margin-top: 15px; background: rgba(241, 143, 1, 0.1); padding: 15px; border-radius: 10px;">
+                                <strong>في حالة النصب والجر</strong><br>
+                                (مفعول به/اسم مجرور/مضاف إليه)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">أمثلة على الإعراب</div>
+                
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">المعلماتُ مجتهداتٌ</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>المعلماتُ</td>
+                                <td>مبتدأ مرفوع وعلامة رفعه الضمة الظاهرة لأنه جمع مؤنث سالم</td>
+                            </tr>
+                            <tr>
+                                <td>مجتهداتٌ</td>
+                                <td>خبر المبتدأ مرفوع وعلامة رفعه الضمة الظاهرة لأنه جمع مؤنث سالم</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">شاهدتُ الطالباتِ</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>الطالباتِ</td>
+                                <td>مفعول به منصوب وعلامة نصبه الكسرة نيابة عن الفتحة لأنه جمع مؤنث سالم</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">مررتُ بالممرضاتِ</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>الممرضاتِ</td>
+                                <td>اسم مجرور وعلامة جره الكسرة الظاهرة لأنه جمع مؤنث سالم</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h3 style="color: #A23B72; margin-bottom: 15px;">ملاحظة مهمة</h3>
+                <p><strong>جمع المؤنث السالم يُنصب ويُجر بالكسرة نيابة عن الفتحة،</strong> وهذا ما يميزه عن باقي الأسماء.</p>
+                <p>فعلامة النصب والجر واحدة وهي الكسرة.</p>
+            </div>
+
+            <div class="example-box">
+                <h3 style="color: #F18F01; margin-bottom: 15px;">تمرين تطبيقي</h3>
+                <p>استخرج جمع المؤنث السالم من الجمل التالية وأعربه إعراباً تاماً:</p>
+                
+                <div class="examples-grid">
+                    <div style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                        <div class="arabic-text">الطبيباتُ ماهراتٌ</div>
+                        <div style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px; height: 60px;"></div>
+                    </div>
+
+                    <div style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                        <div class="arabic-text">كرّمت المديرةُ الطالباتِ المتفوقاتِ</div>
+                        <div style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px; height: 60px;"></div>
+                    </div>
+
+                    <div style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                        <div class="arabic-text">تحدثتُ مع المهندساتِ</div>
+                        <div style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px; height: 60px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- جمع التكسير -->
+        <div class="content-page">
+            <div class="page-header">
+                <h1 class="page-title">جمع التكسير</h1>
+                <div class="page-number">15</div>
+            </div>
+
+            <div class="definition">
+                <div class="definition-title">تعريف جمع التكسير</div>
+                <p>هو اسم يدل على 3 فأكثر ويستخدم لاختصار الجملة، فبدل أن أقول: "شاهدت رجل ورجل ورجل"، أقول: "شاهدت رجال".</p>
+                <p><strong>فجمع التكسير اسم يدل على 3 فأكثر ولكن تتغير فيه صورة المفرد.</strong></p>
+                <p>سُمي تكسيراً لأن حروف المفرد تتكسر وتتغير عند الجمع.</p>
+            </div>
+
+            <div class="mind-map">
+                <div class="mind-map-title">الفرق بين الجموع</div>
+                <div class="mind-map-content">
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                        <div style="text-align: center;">
+                            <div class="mind-map-node" style="background: linear-gradient(135deg, #2E86AB, #A23B72);">جمع المذكر السالم</div>
+                            <div style="margin-top: 15px; background: rgba(46, 134, 171, 0.1); padding: 15px; border-radius: 10px;">
+                                <p><strong>معلم ← معلمون</strong></p>
+                                <p><small>لم تتغير صورة المفرد</small></p>
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <div class="mind-map-node" style="background: linear-gradient(135deg, #A23B72, #F18F01);">جمع المؤنث السالم</div>
+                            <div style="margin-top: 15px; background: rgba(162, 59, 114, 0.1); padding: 15px; border-radius: 10px;">
+                                <p><strong>معلمة ← معلمات</strong></p>
+                                <p><small>لم تتغير صورة المفرد</small></p>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center;">
+                            <div class="mind-map-node" style="background: linear-gradient(135deg, #F18F01, #C73E1D);">جمع التكسير</div>
+                            <div style="margin-top: 15px; background: rgba(241, 143, 1, 0.1); padding: 15px; border-radius: 10px;">
+                                <p><strong>رجل ← رجال</strong></p>
+                                <p><small>تغيرت صورة المفرد</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">أمثلة على جمع التكسير</div>
+                
+                <div class="examples-grid">
+                    <div class="example-card">
+                        <div class="example-title" style="color: #2E86AB;">أمثلة للعاقل</div>
+                        <div class="arabic-text">
+                            رجل ← رجال<br>
+                            طفل ← أطفال<br>
+                            ولد ← أولاد<br>
+                            تاجر ← تجار
+                        </div>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-title" style="color: #A23B72;">أمثلة لغير العاقل</div>
+                        <div class="arabic-text">
+                            كتاب ← كتب<br>
+                            قلم ← أقلام<br>
+                            بيت ← بيوت<br>
+                            شجرة ← أشجار
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3 style="color: #2E86AB; margin-bottom: 15px;">كيف نميز جمع التكسير؟</h3>
+                <div class="flow-chart">
+                    <div class="flow-item">
+                        <strong>1.</strong> أن تكون الكلمة اسم
+                    </div>
+                    <div class="flow-item">
+                        <strong>2.</strong> أن تدل على 3 فأكثر
+                    </div>
+                    <div class="flow-item">
+                        <strong>3.</strong> أن تكون صورة المفرد قد تغيرت
+                    </div>
+                    <div class="flow-item">
+                        <strong>4.</strong> ألا تنتهي بـ (ون/ين/ات)
+                    </div>
+                </div>
+            </div>
+
+            <div class="mind-map">
+                <div class="mind-map-title">إعراب جمع التكسير</div>
+                <div class="mind-map-content">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <p style="font-size: 1.2rem; font-weight: 600; color: #2E86AB;">جمع التكسير يُعرب مثل الاسم المفرد تماماً</p>
+                    </div>
+                    <div style="display: flex; justify-content: space-around; align-items: center;">
+                        <div style="text-align: center;">
+                            <div class="mind-map-node" style="background: linear-gradient(135deg, #2E86AB, #A23B72);">الضمة</div>
+                            <div style="margin-top: 15px; background: rgba(46, 134, 171, 0.1); padding: 15px; border-radius: 10px;">
+                                <strong>في حالة الرفع</strong><br>
+                                (مبتدأ/خبر/فاعل)
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <div class="mind-map-node" style="background: linear-gradient(135deg, #F18F01, #C73E1D);">الفتحة</div>
+                            <div style="margin-top: 15px; background: rgba(241, 143, 1, 0.1); padding: 15px; border-radius: 10px;">
+                                <strong>في حالة النصب</strong><br>
+                                (مفعول به)
+                            </div>
+                        </div>
+
+                        <div style="text-align: center;">
+                            <div class="mind-map-node" style="background: linear-gradient(135deg, #A23B72, #C73E1D);">الكسرة</div>
+                            <div style="margin-top: 15px; background: rgba(162, 59, 114, 0.1); padding: 15px; border-radius: 10px;">
+                                <strong>في حالة الجر</strong><br>
+                                (اسم مجرور/مضاف إليه)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">أمثلة على الإعراب</div>
+                
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">الرجالُ يعملون</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>الرجالُ</td>
+                                <td>مبتدأ مرفوع وعلامة رفعه الضمة الظاهرة</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">قرأتُ الكتبَ</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>الكتبَ</td>
+                                <td>مفعول به منصوب وعلامة نصبه الفتحة الظاهرة</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">جلستُ تحت الأشجارِ</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>الأشجارِ</td>
+                                <td>اسم مجرور وعلامة جره الكسرة الظاهرة</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="example-box">
+                <h3 style="color: #F18F01; margin-bottom: 15px;">تمرين تطبيقي</h3>
+                <p>حول الأسماء المفردة التالية إلى جمع تكسير واستخدمها في جمل مفيدة:</p>
+                
+                <div class="examples-grid">
+                    <div style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                        <p><strong>كلب ← ................</strong></p>
+                        <div style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px; height: 40px;"></div>
+                    </div>
+
+                    <div style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                        <p><strong>طالب ← ................</strong></p>
+                        <div style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px; height: 40px;"></div>
+                    </div>
+
+                    <div style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                        <p><strong>باب ← ................</strong></p>
+                        <div style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px; height: 40px;"></div>
+                    </div>
+
+                    <div style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                        <p><strong>عين ← ................</strong></p>
+                        <div style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px; height: 40px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- المضاف إليه -->
+        <div class="content-page">
+            <div class="page-header">
+                <h1 class="page-title">المضاف إليه</h1>
+                <div class="page-number">16</div>
+            </div>
+
+            <div class="definition">
+                <div class="definition-title">تعريف المضاف إليه</div>
+                <p>هو اسم يأتي بعد اسم آخر مباشرة ليبين ملكيته أو نسبته إليه، ويكون دائماً مجروراً.</p>
+                <p><strong>الإضافة هي نسبة اسم إلى اسم آخر على تقدير حرف الجر.</strong></p>
+            </div>
+
+            <div class="mind-map">
+                <div class="mind-map-title">تركيب الإضافة</div>
+                <div class="mind-map-content">
+                    <div style="display: flex; justify-content: center; align-items: center; gap: 30px;">
+                        <div style="text-align: center;">
+                            <div class="mind-map-node" style="background: linear-gradient(135deg, #2E86AB, #A23B72);">المضاف</div>
+                            <div style="margin-top: 15px; background: rgba(46, 134, 171, 0.1); padding: 15px; border-radius: 10px;">
+                                <strong>الاسم الأول</strong><br>
+                                (لا يقبل أل التعريف)<br>
+                                (لا يقبل التنوين)
+                            </div>
+                        </div>
+                        
+                        <div class="flow-arrow" style="font-size: 2rem; color: #F18F01;">+</div>
+                        
+                        <div style="text-align: center;">
+                            <div class="mind-map-node" style="background: linear-gradient(135deg, #F18F01, #C73E1D);">المضاف إليه</div>
+                            <div style="margin-top: 15px; background: rgba(241, 143, 1, 0.1); padding: 15px; border-radius: 10px;">
+                                <strong>الاسم الثاني</strong><br>
+                                (مجرور دائماً)<br>
+                                (يقبل أل التعريف والتنوين)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3 style="color: #2E86AB; margin-bottom: 15px;">كيف نميز المضاف إليه؟</h3>
+                <div class="flow-chart">
+                    <div class="flow-item">
+                        <strong>1.</strong> أن يكون اسماً
+                    </div>
+                    <div class="flow-item">
+                        <strong>2.</strong> أن يأتي بعد اسم آخر مباشرة
+                    </div>
+                    <div class="flow-item">
+                        <strong>3.</strong> أن يكون مجروراً (مكسور الآخر)
+                    </div>
+                    <div class="flow-item">
+                        <strong>4.</strong> أن يدل على الملكية أو النسبة
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">أمثلة على الإضافة</div>
+                
+                <div class="examples-grid">
+                    <div class="example-card">
+                        <div class="example-title" style="color: #2E86AB;">إضافة الملكية</div>
+                        <div class="arabic-text">
+                            كتابُ الطالبِ<br>
+                            بيتُ المعلمِ<br>
+                            سيارةُ الطبيبِ<br>
+                            قلمُ الولدِ
+                        </div>
+                        <p><small>تدل على أن الشيء الأول مملوك للثاني</small></p>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-title" style="color: #A23B72;">إضافة النسبة</div>
+                        <div class="arabic-text">
+                            طلابُ المدرسةِ<br>
+                            أوراقُ الشجرةِ<br>
+                            مياهُ البحرِ<br>
+                            نورُ الشمسِ
+                        </div>
+                        <p><small>تدل على أن الشيء الأول منسوب للثاني</small></p>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-title" style="color: #F18F01;">إضافة الظرفية</div>
+                        <div class="arabic-text">
+                            صلاةُ الفجرِ<br>
+                            درسُ اليومِ<br>
+                            طعامُ الإفطارِ<br>
+                            نومُ الليلِ
+                        </div>
+                        <p><small>تدل على الوقت أو المكان</small></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">أمثلة على الإعراب</div>
+                
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">كتابُ الطالبِ جديدٌ</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>كتابُ</td>
+                                <td>مبتدأ مرفوع وعلامة رفعه الضمة الظاهرة، وهو مضاف</td>
+                            </tr>
+                            <tr>
+                                <td>الطالبِ</td>
+                                <td>مضاف إليه مجرور وعلامة جره الكسرة الظاهرة</td>
+                            </tr>
+                            <tr>
+                                <td>جديدٌ</td>
+                                <td>خبر المبتدأ مرفوع وعلامة رفعه الضمة الظاهرة</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">شاهدتُ بيتَ المعلمِ</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>بيتَ</td>
+                                <td>مفعول به منصوب وعلامة نصبه الفتحة الظاهرة، وهو مضاف</td>
+                            </tr>
+                            <tr>
+                                <td>المعلمِ</td>
+                                <td>مضاف إليه مجرور وعلامة جره الكسرة الظاهرة</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">جلستُ في حديقةِ البيتِ</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>حديقةِ</td>
+                                <td>اسم مجرور وعلامة جره الكسرة الظاهرة، وهو مضاف</td>
+                            </tr>
+                            <tr>
+                                <td>البيتِ</td>
+                                <td>مضاف إليه مجرور وعلامة جره الكسرة الظاهرة</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h3 style="color: #A23B72; margin-bottom: 15px;">قواعد مهمة</h3>
+                <ul style="margin-right: 20px;">
+                    <li><strong>المضاف لا يقبل أل التعريف ولا التنوين</strong></li>
+                    <li><strong>المضاف إليه دائماً مجرور</strong></li>
+                    <li><strong>لا يجوز الفصل بين المضاف والمضاف إليه</strong></li>
+                    <li><strong>إعراب المضاف حسب موقعه في الجملة</strong></li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h3 style="color: #F18F01; margin-bottom: 15px;">تمرين تطبيقي</h3>
+                <p>استخرج المضاف والمضاف إليه من الجمل التالية وأعربهم إعراباً تاماً:</p>
+                
+                <div class="examples-grid">
+                    <div style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                        <div class="arabic-text">سيارةُ الطبيبِ سريعةٌ</div>
+                        <div style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px; height: 60px;"></div>
+                    </div>
+
+                    <div style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                        <div class="arabic-text">قرأتُ كتابَ النحوِ</div>
+                        <div style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px; height: 60px;"></div>
+                    </div>
+
+                    <div style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                        <div class="arabic-text">مررتُ بحديقةِ المدرسةِ</div>
+                        <div style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px; height: 60px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- كان وأخواتها -->
+        <div class="content-page">
+            <div class="page-header">
+                <h1 class="page-title">كان وأخواتها</h1>
+                <div class="page-number">17</div>
+            </div>
+
+            <div class="definition">
+                <div class="definition-title">تعريف كان وأخواتها</div>
+                <p>هي أفعال ناسخة تدخل على الجملة الاسمية فترفع المبتدأ ويسمى اسمها، وتنصب الخبر ويسمى خبرها.</p>
+                <p><strong>سُميت ناسخة لأنها نسخت (غيرت) حكم الخبر من الرفع إلى النصب.</strong></p>
+            </div>
+
+            <div class="mind-map">
+                <div class="mind-map-title">أخوات كان</div>
+                <div class="mind-map-content">
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 20px;">
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #2E86AB, #A23B72);">كان</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #A23B72, #F18F01);">أصبح</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #F18F01, #C73E1D);">أضحى</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #C73E1D, #2E86AB);">ظل</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #2E86AB, #F18F01);">بات</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #A23B72, #C73E1D);">صار</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #F18F01, #2E86AB);">ليس</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #C73E1D, #A23B72);">ما زال</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #2E86AB, #C73E1D);">ما دام</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #A23B72, #F18F01);">ما برح</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #F18F01, #A23B72);">ما انفك</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #C73E1D, #F18F01);">ما فتئ</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3 style="color: #2E86AB; margin-bottom: 15px;">عمل كان وأخواتها</h3>
+                <div class="flow-chart">
+                    <div class="flow-item">
+                        <strong>الجملة الاسمية الأصلية</strong><br>
+                        <div class="arabic-text">الطالبُ مجتهدٌ</div>
+                        <p><small>مبتدأ مرفوع + خبر مرفوع</small></p>
+                    </div>
+                    <div class="flow-arrow">←</div>
+                    <div class="flow-item">
+                        <strong>بعد دخول كان</strong><br>
+                        <div class="arabic-text">كان الطالبُ مجتهداً</div>
+                        <p><small>اسم كان مرفوع + خبر كان منصوب</small></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">أمثلة على الإعراب</div>
+                
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">كان الطقسُ جميلاً</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>كان</td>
+                                <td>فعل ماضٍ ناسخ مبني على الفتح</td>
+                            </tr>
+                            <tr>
+                                <td>الطقسُ</td>
+                                <td>اسم كان مرفوع وعلامة رفعه الضمة الظاهرة</td>
+                            </tr>
+                            <tr>
+                                <td>جميلاً</td>
+                                <td>خبر كان منصوب وعلامة نصبه الفتحة الظاهرة</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">أصبح الولدُ طبيباً</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>أصبح</td>
+                                <td>فعل ماضٍ ناسخ مبني على الفتح</td>
+                            </tr>
+                            <tr>
+                                <td>الولدُ</td>
+                                <td>اسم أصبح مرفوع وعلامة رفعه الضمة الظاهرة</td>
+                            </tr>
+                            <tr>
+                                <td>طبيباً</td>
+                                <td>خبر أصبح منصوب وعلامة نصبه الفتحة الظاهرة</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">ليس الامتحانُ صعباً</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>ليس</td>
+                                <td>فعل ماضٍ ناسخ مبني على الفتح</td>
+                            </tr>
+                            <tr>
+                                <td>الامتحانُ</td>
+                                <td>اسم ليس مرفوع وعلامة رفعه الضمة الظاهرة</td>
+                            </tr>
+                            <tr>
+                                <td>صعباً</td>
+                                <td>خبر ليس منصوب وعلامة نصبه الفتحة الظاهرة</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h3 style="color: #A23B72; margin-bottom: 15px;">معاني بعض أخوات كان</h3>
+                <div class="examples-grid">
+                    <div style="background: white; padding: 15px; border-radius: 10px; margin: 10px 0;">
+                        <p><strong>كان:</strong> للماضي المطلق</p>
+                        <p><strong>أصبح:</strong> للصباح أو التحول</p>
+                        <p><strong>أضحى:</strong> للضحى</p>
+                        <p><strong>ظل:</strong> للنهار</p>
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 10px; margin: 10px 0;">
+                        <p><strong>بات:</strong> للليل</p>
+                        <p><strong>صار:</strong> للتحول والانتقال</p>
+                        <p><strong>ليس:</strong> للنفي</p>
+                        <p><strong>ما زال:</strong> للاستمرار</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="example-box">
+                <h3 style="color: #F18F01; margin-bottom: 15px;">تمرين تطبيقي</h3>
+                <p>أدخل إحدى أخوات كان على الجمل التالية وأعرب الجملة إعراباً تاماً:</p>
+                
+                <div class="examples-grid">
+                    <div style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                        <p><strong>الجملة الأصلية:</strong> الجوُّ باردٌ</p>
+                        <div class="arabic-text">.................. الجوُّ بارداً</div>
+                        <div style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px; height: 60px;"></div>
+                    </div>
+
+                    <div style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                        <p><strong>الجملة الأصلية:</strong> المطرُ غزيرٌ</p>
+                        <div class="arabic-text">.................. المطرُ غزيراً</div>
+                        <div style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px; height: 60px;"></div>
+                    </div>
+
+                    <div style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                        <p><strong>الجملة الأصلية:</strong> الطالبُ نشيطٌ</p>
+                        <div class="arabic-text">.................. الطالبُ نشيطاً</div>
+                        <div style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px; height: 60px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- إن وأخواتها -->
+        <div class="content-page">
+            <div class="page-header">
+                <h1 class="page-title">إن وأخواتها</h1>
+                <div class="page-number">18</div>
+            </div>
+
+            <div class="definition">
+                <div class="definition-title">تعريف إن وأخواتها</div>
+                <p>هي حروف ناسخة تدخل على الجملة الاسمية فتنصب المبتدأ ويسمى اسمها، وترفع الخبر ويسمى خبرها.</p>
+                <p><strong>سُميت ناسخة لأنها نسخت (غيرت) حكم المبتدأ من الرفع إلى النصب.</strong></p>
+            </div>
+
+            <div class="mind-map">
+                <div class="mind-map-title">أخوات إن</div>
+                <div class="mind-map-content">
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px;">
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #2E86AB, #A23B72);">إنّ</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #A23B72, #F18F01);">أنّ</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #F18F01, #C73E1D);">كأنّ</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #C73E1D, #2E86AB);">لكنّ</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #2E86AB, #F18F01);">ليت</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #A23B72, #C73E1D);">لعلّ</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3 style="color: #2E86AB; margin-bottom: 15px;">عمل إن وأخواتها</h3>
+                <div class="flow-chart">
+                    <div class="flow-item">
+                        <strong>الجملة الاسمية الأصلية</strong><br>
+                        <div class="arabic-text">الطالبُ مجتهدٌ</div>
+                        <p><small>مبتدأ مرفوع + خبر مرفوع</small></p>
+                    </div>
+                    <div class="flow-arrow">←</div>
+                    <div class="flow-item">
+                        <strong>بعد دخول إن</strong><br>
+                        <div class="arabic-text">إنّ الطالبَ مجتهدٌ</div>
+                        <p><small>اسم إن منصوب + خبر إن مرفوع</small></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">معاني أخوات إن</div>
+                
+                <div class="examples-grid">
+                    <div class="example-card">
+                        <div class="example-title" style="color: #2E86AB;">إنّ وأنّ</div>
+                        <p><strong>للتوكيد</strong></p>
+                        <div class="arabic-text">إنّ العلمَ نورٌ<br>أعلم أنّ الصدقَ منجاةٌ</div>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-title" style="color: #A23B72;">كأنّ</div>
+                        <p><strong>للتشبيه</strong></p>
+                        <div class="arabic-text">كأنّ القمرَ مصباحٌ<br>كأنّ النجومَ عيونٌ</div>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-title" style="color: #F18F01;">لكنّ</div>
+                        <p><strong>للاستدراك</strong></p>
+                        <div class="arabic-text">الجوُّ باردٌ لكنّ الشمسَ مشرقةٌ</div>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-title" style="color: #C73E1D;">ليت</div>
+                        <p><strong>للتمني</strong></p>
+                        <div class="arabic-text">ليت الشبابَ يعودُ يوماً<br>ليت السلامَ يعمُّ العالمَ</div>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-title" style="color: #2E86AB;">لعلّ</div>
+                        <p><strong>للترجي والتوقع</strong></p>
+                        <div class="arabic-text">لعلّ الفرجَ قريبٌ<br>لعلّ المطرَ ينزلُ</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">أمثلة على الإعراب</div>
+                
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">إنّ الصبرَ مفتاحُ الفرجِ</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>إنّ</td>
+                                <td>حرف توكيد ونصب</td>
+                            </tr>
+                            <tr>
+                                <td>الصبرَ</td>
+                                <td>اسم إن منصوب وعلامة نصبه الفتحة الظاهرة</td>
+                            </tr>
+                            <tr>
+                                <td>مفتاحُ</td>
+                                <td>خبر إن مرفوع وعلامة رفعه الضمة الظاهرة، وهو مضاف</td>
+                            </tr>
+                            <tr>
+                                <td>الفرجِ</td>
+                                <td>مضاف إليه مجرور وعلامة جره الكسرة الظاهرة</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">كأنّ النجومَ عيونٌ</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>كأنّ</td>
+                                <td>حرف تشبيه ونصب</td>
+                            </tr>
+                            <tr>
+                                <td>النجومَ</td>
+                                <td>اسم كأن منصوب وعلامة نصبه الفتحة الظاهرة</td>
+                            </tr>
+                            <tr>
+                                <td>عيونٌ</td>
+                                <td>خبر كأن مرفوع وعلامة رفعه الضمة الظاهرة</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">ليت الشبابَ يعودُ</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>ليت</td>
+                                <td>حرف تمني ونصب</td>
+                            </tr>
+                            <tr>
+                                <td>الشبابَ</td>
+                                <td>اسم ليت منصوب وعلامة نصبه الفتحة الظاهرة</td>
+                            </tr>
+                            <tr>
+                                <td>يعودُ</td>
+                                <td>خبر ليت (جملة فعلية) في محل رفع</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h3 style="color: #A23B72; margin-bottom: 15px;">الفرق بين إن وأن</h3>
+                <div class="flow-chart">
+                    <div class="flow-item">
+                        <strong>إنّ</strong><br>
+                        تأتي في بداية الجملة<br>
+                        <div class="arabic-text">إنّ العلمَ نورٌ</div>
+                    </div>
+                    <div class="flow-item">
+                        <strong>أنّ</strong><br>
+                        تأتي بعد فعل أو حرف<br>
+                        <div class="arabic-text">أعلم أنّ العلمَ نورٌ</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="example-box">
+                <h3 style="color: #F18F01; margin-bottom: 15px;">تمرين تطبيقي</h3>
+                <p>أدخل إحدى أخوات إن على الجمل التالية وأعرب الجملة إعراباً تاماً:</p>
+                
+                <div class="examples-grid">
+                    <div style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                        <p><strong>الجملة الأصلية:</strong> الامتحانُ سهلٌ</p>
+                        <div class="arabic-text">.................. الامتحانَ سهلٌ</div>
+                        <div style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px; height: 60px;"></div>
+                    </div>
+
+                    <div style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                        <p><strong>الجملة الأصلية:</strong> الوردةُ جميلةٌ</p>
+                        <div class="arabic-text">.................. الوردةَ جميلةٌ</div>
+                        <div style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px; height: 60px;"></div>
+                    </div>
+
+                    <div style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                        <p><strong>الجملة الأصلية:</strong> المطرُ نازلٌ</p>
+                        <div class="arabic-text">.................. المطرَ نازلٌ</div>
+                        <div style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px; height: 60px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- العطف -->
+        <div class="content-page">
+            <div class="page-header">
+                <h1 class="page-title">العطف</h1>
+                <div class="page-number">19</div>
+            </div>
+
+            <div class="definition">
+                <div class="definition-title">تعريف العطف</div>
+                <p>العطف هو تابع يتوسط بينه وبين متبوعه أحد حروف العطف.</p>
+                <p><strong>يتكون العطف من: معطوف عليه + حرف عطف + معطوف</strong></p>
+                <p>والمعطوف يأخذ نفس إعراب المعطوف عليه.</p>
+            </div>
+
+            <div class="mind-map">
+                <div class="mind-map-title">حروف العطف</div>
+                <div class="mind-map-content">
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 20px;">
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #061b24, #A23B72);">الواو</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #A23B72, #ffd900);">الفاء</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #13464f, #ff0088);">ثم</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #2E86AB, #1f0312)">أو</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #c71db3, #000000);">أم</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #000000, #1dc4c7);">بل</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #8901f1, #000000e0);">لكن</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #000000e5,  #d83838);">لا</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">معاني حروف العطف</div>
+                
+                <div class="examples-grid">
+                    <div class="example-card">
+                        <div class="example-title" style="color: #2E86AB;">الواو</div>
+                        <p><strong>للجمع المطلق</strong></p>
+                        <div class="arabic-text">جاء أحمدُ وخالدٌ</div>
+                        <p><small>كلاهما جاء دون ترتيب زمني</small></p>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-title" style="color: #A23B72;">الفاء</div>
+                        <p><strong>للترتيب والتعقيب</strong></p>
+                        <div class="arabic-text">دخل المعلمُ فالطلابُ</div>
+                        <p><small>دخل المعلم أولاً ثم الطلاب بعده مباشرة</small></p>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-title" style="color: #F18F01;">ثم</div>
+                        <p><strong>للترتيب مع التراخي</strong></p>
+                        <div class="arabic-text">جاء أحمدُ ثم محمدٌ</div>
+                        <p><small>جاء أحمد أولاً ثم محمد بعد فترة</small></p>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-title" style="color: #C73E1D;">أو</div>
+                        <p><strong>للتخيير أو الشك</strong></p>
+                        <div class="arabic-text">اشرب شاياً أو قهوةً</div>
+                        <p><small>اختر واحداً منهما</small></p>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-title" style="color: #2E86AB;">بل</div>
+                        <p><strong>للإضراب</strong></p>
+                        <div class="arabic-text">ما جاء أحمدُ بل خالدٌ</div>
+                        <p><small>تصحيح المعلومة السابقة</small></p>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-title" style="color: #A23B72;">لكن</div>
+                        <p><strong>للاستدراك</strong></p>
+                        <div class="arabic-text">ما جاء أحمدُ لكن خالدٌ</div>
+                        <p><small>استدراك بعد نفي</small></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3 style="color: #2E86AB; margin-bottom: 15px;">قاعدة العطف</h3>
+                <div class="flow-chart">
+                    <div class="flow-item">
+                        <strong>المعطوف عليه</strong><br>
+                        الكلمة الأولى<br>
+                        <div class="arabic-text">جاء أحمدُ</div>
+                    </div>
+                    <div class="flow-arrow">+</div>
+                    <div class="flow-item">
+                        <strong>حرف العطف</strong><br>
+                        الرابط<br>
+                        <div class="arabic-text">و</div>
+                    </div>
+                    <div class="flow-arrow">+</div>
+                    <div class="flow-item">
+                        <strong>المعطوف</strong><br>
+                        يأخذ نفس إعراب المعطوف عليه<br>
+                        <div class="arabic-text">خالدٌ</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">أمثلة على الإعراب</div>
+                
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">قرأتُ الكتابَ والمجلةَ</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>الكتابَ</td>
+                                <td>مفعول به منصوب وعلامة نصبه الفتحة الظاهرة</td>
+                            </tr>
+                            <tr>
+                                <td>الواو</td>
+                                <td>حرف عطف</td>
+                            </tr>
+                            <tr>
+                                <td>المجلةَ</td>
+                                <td>معطوف منصوب وعلامة نصبه الفتحة الظاهرة</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">جاء المعلمُ فالطلابُ</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>المعلمُ</td>
+                                <td>فاعل مرفوع وعلامة رفعه الضمة الظاهرة</td>
+                            </tr>
+                            <tr>
+                                <td>الفاء</td>
+                                <td>حرف عطف</td>
+                            </tr>
+                            <tr>
+                                <td>الطلابُ</td>
+                                <td>معطوف مرفوع وعلامة رفعه الضمة الظاهرة</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="example-box">
+                    <div class="arabic-text" style="font-size: 1.5rem; margin-bottom: 20px;">مررتُ بأحمدَ ثم خالدٍ</div>
+                    <table class="grammar-table">
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>الإعراب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>أحمدَ</td>
+                                <td>اسم مجرور وعلامة جره الفتحة نيابة عن الكسرة لأنه ممنوع من الصرف</td>
+                            </tr>
+                            <tr>
+                                <td>ثم</td>
+                                <td>حرف عطف</td>
+                            </tr>
+                            <tr>
+                                <td>خالدٍ</td>
+                                <td>معطوف مجرور وعلامة جره الكسرة الظاهرة</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h3 style="color: #A23B72; margin-bottom: 15px;">ملاحظات مهمة</h3>
+                <ul style="margin-right: 20px;">
+                    <li><strong>المعطوف يتبع المعطوف عليه في الإعراب</strong></li>
+                    <li><strong>حرف العطف لا محل له من الإعراب</strong></li>
+                    <li><strong>يمكن عطف أكثر من كلمة واحدة</strong></li>
+                    <li><strong>العطف يكون بين المتجانسات (اسم على اسم، فعل على فعل، جملة على جملة)</strong></li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h3 style="color: #F18F01; margin-bottom: 15px;">تمرين تطبيقي</h3>
+                <p>استخرج المعطوف والمعطوف عليه وحرف العطف من الجمل التالية وأعربهم:</p>
+                
+                <div class="examples-grid">
+                    <div style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                        <div class="arabic-text">اشترى الولدُ كتاباً وقلماً</div>
+                        <div style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px; height: 60px;"></div>
+                    </div>
+
+                    <div style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                        <div class="arabic-text">دخل الأستاذُ ثم الطلابُ</div>
+                        <div style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px; height: 60px;"></div>
+                    </div>
+
+                    <div style="background: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                        <div class="arabic-text">سلمتُ على أحمدَ فخالدٍ</div>
+                        <div style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px; height: 60px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- الخاتمة -->
+        <div class="content-page">
+            <div class="page-header">
+                <h1 class="page-title">الخاتمة</h1>
+                <div class="page-number">20</div>
+            </div>
+
+            <div class="highlight-box">
+                <h2 style="color: #2E86AB; text-align: center; margin-bottom: 30px;">تم بحمد الله</h2>
+                <p style="text-align: center; font-size: 1.2rem; line-height: 2;">
+                    وبهذا نكون قد انتهينا من دراسة أهم قواعد اللغة العربية الأساسية في هذه الدوسية الشاملة.
+                </p>
+            </div>
+
+            <div class="mind-map">
+                <div class="mind-map-title">ما تعلمناه في هذه الدوسية</div>
+                <div class="mind-map-content">
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 20px;">
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #2E86AB, #8a3ba2);">أقسام الكلام</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #2E86AB, #8a3ba2);">الجمل الاسمية والفعلية</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #2E86AB, #8a3ba2);">الاسم المجرور</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #2E86AB, #8a3ba2);">المثنى</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #2E86AB, #8a3ba2);">جمع المذكر السالم</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #2E86AB, #8a3ba2);">جمع المؤنث السالم</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #2E86AB, #8a3ba2);">جمع التكسير</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #2E86AB, #8a3ba2);">المضاف إليه</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #2E86AB, #8a3ba2);">كان وأخواتها</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #2E86AB, #8a3ba2);">إن وأخواتها</div>
+                        <div class="mind-map-node" style="background: linear-gradient(135deg, #2E86AB, #8a3ba2);">العطف</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h3 style="color: #A23B72; margin-bottom: 20px; text-align: center;">نصائح للمراجعة والتطبيق</h3>
+                <div class="examples-grid">
+                    <div class="example-card">
+                        <div class="example-title" style="color: #2E86AB;">المراجعة المستمرة</div>
+                        <p>راجع هذه القواعد بانتظام واربطها بالنصوص التي تقرأها يومياً</p>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-title" style="color: #A23B72;">التطبيق العملي</div>
+                        <p>طبق هذه القواعد في كتابتك وحديثك اليومي لتثبيت المعلومات</p>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-title" style="color: #F18F01;">القراءة الواعية</div>
+                        <p>اقرأ النصوص العربية مع التركيز على تطبيق القواعد النحوية</p>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-title" style="color: #C73E1D;">حل التمارين</div>
+                        <p>احرص على حل التمارين الموجودة في كل فصل لتقوية فهمك</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="definition">
+                <div class="definition-title">كلمة أخيرة</div>
+                <p style="text-align: center; font-size: 1.1rem; line-height: 2;">
+                    اللغة العربية لغة جميلة وثرية، وهذه الدوسية هي بداية الطريق لإتقانها. 
+                    استمر في التعلم والتطبيق، وستجد نفسك تتقن هذه اللغة الرائعة بإذن الله.
+                </p>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px; padding: 30px; background: linear-gradient(145deg, #00d5ff, #8c88f7); color: white; border-radius: 20px;">
+                <p style="font-size: 1.2rem; opacity: 1.9;">إعداد المعلم :</p>
+                <h2 style="margin-bottom: 50px;">بدر عمران</h2>
+                <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 15px;">
+                    دوسية تأسيسية في اللغة العربية -  2025 copyright 
+                </p>
+                
+                <!-- G-Tech Branding -->
+                <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.3);">
+                    <a href="mailto:ghassan.98@yahoo.com" style="
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 8px;
+                        color: white;
+                        text-decoration: none;
+                        font-size: 0.9rem;
+                        opacity: 0.9;
+                        transition: all 0.3s ease;
+                        padding: 8px 15px;
+                        border-radius: 15px;
+                        background: rgba(255,255,255,0.1);
+                        backdrop-filter: blur(10px);
+                    " onmouseover="this.style.opacity='1'; this.style.transform='translateY(-2px)'; this.style.background='rgba(255,255,255,0.2)'" 
+                       onmouseout="this.style.opacity='0.9'; this.style.transform='translateY(0)'; this.style.background='rgba(255,255,255,0.1)'">
+                        <span style="
+                            background: linear-gradient(45deg, #00d5ff, #8c88f7);
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                            background-clip: text;
+                            font-weight: bold;
+                            font-size: 1rem;
+                        ">⚡</span>
+                        Made with G-Tech
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- نهاية الصفحات -->
+    </div>
+
+    <script>
+        // PWA Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(function(err) {
+                        console.log('ServiceWorker registration failed');
+                    });
+            });
+        }
+
+        // PWA Install Prompt
+        let deferredPrompt;
+        const installButton = document.createElement('button');
+        installButton.textContent = '📱 تحميل التطبيق';
+        installButton.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #2E86AB, #A23B72);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 25px;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            display: none;
+            transition: all 0.3s ease;
+            min-height: 44px;
+            min-width: 44px;
+        `;
+
+        installButton.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px)';
+            this.style.boxShadow = '0 8px 20px rgba(0,0,0,0.3)';
+        });
+
+        installButton.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.2)';
+        });
+
+        document.body.appendChild(installButton);
+
+        window.addEventListener('beforeinstallprompt', function(e) {
+            e.preventDefault();
+            deferredPrompt = e;
+            installButton.style.display = 'block';
+            
+            // إضافة تأثير الظهور
+            setTimeout(() => {
+                installButton.style.animation = 'slideUp 0.5s ease-out';
+            }, 1000);
+        });
+
+        installButton.addEventListener('click', function() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then(function(choiceResult) {
+                    if (choiceResult.outcome === 'accepted') {
+                        installButton.style.display = 'none';
+                    }
+                    deferredPrompt = null;
+                });
+            }
+        });
+
+        // Share Button
+        if (navigator.share) {
+            const shareButton = document.createElement('button');
+            shareButton.textContent = '📤 مشاركة';
+            shareButton.style.cssText = `
+                position: fixed;
+                bottom: 80px;
+                right: 20px;
+                background: linear-gradient(135deg, #F18F01, #C73E1D);
+                color: white;
+                border: none;
+                padding: 15px 25px;
+                border-radius: 25px;
+                font-family: 'Cairo', sans-serif;
+                font-weight: 600;
+                font-size: 1rem;
+                cursor: pointer;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                z-index: 1000;
+                transition: all 0.3s ease;
+                min-height: 44px;
+                min-width: 44px;
+            `;
+
+            shareButton.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 8px 20px rgba(0,0,0,0.3)';
+            });
+
+            shareButton.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.2)';
+            });
+
+            shareButton.addEventListener('click', function() {
+                navigator.share({
+                    title: 'بصائر النحو في اللغة العربية',
+                    text: 'دوسية تعليمية رائعة لتعلم النحو العربي بطريقة عصرية وممتعة',
+                    url: window.location.href
+                });
+            });
+
+            document.body.appendChild(shareButton);
+        }
+
+        // إضافة أنماط CSS للحركات
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideUp {
+                from {
+                    transform: translateY(100px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+            
+            .pulse-animation {
+                animation: pulse 2s infinite;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // تحسينات إضافية للأداء
+        function optimizePerformance() {
+            // تحسين الخطوط
+            if ('fonts' in document) {
+                document.fonts.ready.then(() => {
+                    console.log('تم تحميل الخطوط بنجاح');
+                });
+            }
+            
+            // تحسين الصور
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.loading = 'lazy';
+            });
+            
+            // تحسين الأداء العام
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(() => {
+                    console.log('تم تحسين الأداء');
+                });
+            }
+        }
+
+        // تشغيل التحسينات
+        optimizePerformance();
+
+        // إضافة بعض التفاعلية للصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            // تأثير الحركة للعقد في الخرائط الذهنية
+            const nodes = document.querySelectorAll('.mind-map-node');
+            nodes.forEach(node => {
+                node.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.05)';
+                    this.style.transition = 'transform 0.3s ease';
+                });
+                
+                node.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+
+            // تأثير الحركة للبطاقات
+            const cards = document.querySelectorAll('.example-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.boxShadow = '0 10px 25px rgba(0,0,0,0.15)';
+                    this.style.transition = 'all 0.3s ease';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+                });
+            });
+
+            // إضافة تأثير النبض لأزرار PWA بعد 3 ثوان
+            setTimeout(() => {
+                if (installButton.style.display !== 'none') {
+                    installButton.classList.add('pulse-animation');
+                }
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
