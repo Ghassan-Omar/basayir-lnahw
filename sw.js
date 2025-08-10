@@ -5,9 +5,9 @@ const urlsToCache = [
   '/basayir-lnahw/style.css',
   '/basayir-lnahw/script.js',
   '/basayir-lnahw/downloads/myfile.pdf',
-  '/manifest.json',
-  '/icon-192.png',
-  '/icon-512.png',
+  '/basayir-lnahw/manifest.json',
+  '/basayir-lnahw/icon-192.png',
+  '/basayir-lnahw/icon-512.png',
   'https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@300;400;500;700&family=Amiri:wght@400;700&display=swap'
 ];
 
