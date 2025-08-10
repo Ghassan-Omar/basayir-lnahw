@@ -166,6 +166,27 @@
             animation: rotate 15s linear infinite reverse;
         }
 
+        .installButton{   position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #fb2597, #3Bf2);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 25px;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            display: none;
+            transition: all 0.3s ease;
+            min-height: 44px;
+            min-width: 44px;
+        }
+
+
         @keyframes rotate {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
@@ -3571,7 +3592,7 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: linear-gradient(135deg, #2E86AB, #A23B72);
+            background: linear-gradient(45deg, #1f0312, #3gfBf2);
             color: white;
             border: none;
             padding: 15px 25px;

@@ -1,7 +1,10 @@
 const CACHE_NAME = 'basaer-nahw-v1';
 const urlsToCache = [
   '/',
-  '/index.html',
+  '/basayir-lnahw/index.html',
+  '/basayir-lnahw/style.css',
+  '/basayir-lnahw/script.js',
+  '/basayir-lnahw/downloads/myfile.pdf',
   '/manifest.json',
   '/icon-192.png',
   '/icon-512.png',
