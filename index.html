@@ -166,27 +166,6 @@
             animation: rotate 15s linear infinite reverse;
         }
 
-        .installButton{   position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: linear-gradient(45deg, #fb2597, #3Bf2);
-            color: white;
-            border: none;
-            padding: 15px 25px;
-            border-radius: 25px;
-            font-family: 'Cairo', sans-serif;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            z-index: 1000;
-            display: none;
-            transition: all 0.3s ease;
-            min-height: 44px;
-            min-width: 44px;
-        }
-
-
         @keyframes rotate {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
@@ -887,8 +866,8 @@
         }
 
         .flow-chart {
-            display: flex;
-            justify-content: center;
+            display: flow-root;
+            justify-content: space-between;
             align-items: center;
             margin: 30px 0;
             padding: 20px;
@@ -3571,69 +3550,126 @@
     </div>
 
     <script>
-        // PWA Service Worker Registration
+        // PWA Service Worker Registration - محسن لـ GitHub Pages
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/sw.js')
+                // تحديد المسار الصحيح للـ Service Worker
+                const swPath = window.location.pathname.endsWith('/') ? 
+                    window.location.pathname + 'sw.js' : 
+                    window.location.pathname.replace(/\/[^\/]*$/, '/') + 'sw.js';
+                
+                navigator.serviceWorker.register(swPath)
                     .then(function(registration) {
                         console.log('ServiceWorker registration successful');
+                        
+                        // فحص التحديثات
+                        registration.addEventListener('updatefound', () => {
+                            const newWorker = registration.installing;
+                            newWorker.addEventListener('statechange', () => {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    // إشعار المستخدم بوجود تحديث
+                                    if (confirm('يتوفر تحديث جديد للتطبيق. هل تريد إعادة التحميل؟')) {
+                                        window.location.reload();
+                                    }
+                                }
+                            });
+                        });
                     })
                     .catch(function(err) {
-                        console.log('ServiceWorker registration failed');
+                        console.log('ServiceWorker registration failed:', err);
+                        // حتى لو فشل Service Worker، يمكن عرض زر التحميل
                     });
             });
         }
 
-        // PWA Install Prompt
+        // PWA Install Prompt - محسن لـ GitHub Pages
         let deferredPrompt;
-        const installButton = document.createElement('button');
-        installButton.textContent = '📱 تحميل التطبيق';
-        installButton.style.cssText = `
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: linear-gradient(45deg, #29c2b0, #6b008b);
-            color: white;
-            border: none;
-            padding: 15px 25px;
-            border-radius: 25px;
-            font-family: 'Cairo', sans-serif;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            z-index: 1000;
-            display: none;
-            transition: all 0.3s ease;
-            min-height: 44px;
-            min-width: 44px;
-        `;
+        let installButton;
 
-        installButton.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-2px)';
-            this.style.boxShadow = '0 8px 20px rgba(0,0,0,0.3)';
-        });
+        function createInstallButton() {
+            installButton = document.createElement('button');
+            installButton.textContent = '📱 تحميل التطبيق';
+            installButton.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: linear-gradient(135deg, #2E86AB, #A23B72);
+                color: white;
+                border: none;
+                padding: 15px 25px;
+                border-radius: 25px;
+                font-family: 'Cairo', sans-serif;
+                font-weight: 600;
+                font-size: 1rem;
+                cursor: pointer;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                z-index: 1000;
+                transition: all 0.3s ease;
+                min-height: 44px;
+                min-width: 44px;
+                display: none;
+            `;
 
-        installButton.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-            this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.2)';
-        });
+            installButton.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 8px 20px rgba(0,0,0,0.3)';
+            });
 
+            installButton.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.2)';
+            });
+
+            return installButton;
+        }
+
+        // إنشاء زر التحميل
+        installButton = createInstallButton();
         document.body.appendChild(installButton);
 
+        // فحص إمكانية التثبيت
+        function checkInstallability() {
+            // فحص إذا كان التطبيق مثبت مسبقاً
+            if (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) {
+                return false; // التطبيق مثبت مسبقاً
+            }
+
+            // فحص إذا كان المتصفح يدعم PWA
+            if ('serviceWorker' in navigator && 'PushManager' in window) {
+                return true;
+            }
+
+            return false;
+        }
+
+        // عرض زر التحميل بناءً على الشروط
+        function showInstallButton() {
+            if (checkInstallability()) {
+                installButton.style.display = 'block';
+                
+                // إضافة تأثير الظهور
+                setTimeout(() => {
+                    installButton.style.animation = 'slideUp 0.5s ease-out';
+                }, 1000);
+
+                // إضافة تأثير النبض بعد 3 ثوان
+                setTimeout(() => {
+                    installButton.classList.add('pulse-animation');
+                }, 3000);
+            }
+        }
+
+        // معالج حدث beforeinstallprompt (للمتصفحات التي تدعمه)
         window.addEventListener('beforeinstallprompt', function(e) {
             e.preventDefault();
             deferredPrompt = e;
-            installButton.style.display = 'block';
-            
-            // إضافة تأثير الظهور
-            setTimeout(() => {
-                installButton.style.animation = 'slideUp 0.5s ease-out';
-            }, 1000);
+            showInstallButton();
         });
 
+        // معالج النقر على زر التحميل
         installButton.addEventListener('click', function() {
             if (deferredPrompt) {
+                // استخدام الطريقة التلقائية إذا كانت متاحة
                 deferredPrompt.prompt();
                 deferredPrompt.userChoice.then(function(choiceResult) {
                     if (choiceResult.outcome === 'accepted') {
@@ -3641,8 +3677,91 @@
                     }
                     deferredPrompt = null;
                 });
+            } else {
+                // عرض تعليمات التثبيت اليدوي
+                showManualInstallInstructions();
             }
         });
+
+        // عرض تعليمات التثبيت اليدوي
+        function showManualInstallInstructions() {
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.8);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+                font-family: 'Cairo', sans-serif;
+            `;
+
+            const content = document.createElement('div');
+            content.style.cssText = `
+                background: white;
+                padding: 30px;
+                border-radius: 15px;
+                max-width: 400px;
+                margin: 20px;
+                text-align: center;
+                direction: rtl;
+            `;
+
+            const userAgent = navigator.userAgent;
+            let instructions = '';
+
+            if (/iPhone|iPad|iPod/.test(userAgent)) {
+                instructions = `
+                    <h3 style="color: #2E86AB; margin-bottom: 20px;">تثبيت التطبيق على iOS</h3>
+                    <p style="margin-bottom: 15px;">1. انقر على زر المشاركة <span style="font-size: 1.2em;">⬆️</span></p>
+                    <p style="margin-bottom: 15px;">2. اختر "إضافة إلى الشاشة الرئيسية"</p>
+                    <p style="margin-bottom: 15px;">3. انقر "إضافة"</p>
+                `;
+            } else if (/Android/.test(userAgent)) {
+                instructions = `
+                    <h3 style="color: #2E86AB; margin-bottom: 20px;">تثبيت التطبيق على Android</h3>
+                    <p style="margin-bottom: 15px;">1. انقر على قائمة المتصفح <span style="font-size: 1.2em;">⋮</span></p>
+                    <p style="margin-bottom: 15px;">2. اختر "إضافة إلى الشاشة الرئيسية"</p>
+                    <p style="margin-bottom: 15px;">3. انقر "إضافة"</p>
+                `;
+            } else {
+                instructions = `
+                    <h3 style="color: #2E86AB; margin-bottom: 20px;">تثبيت التطبيق</h3>
+                    <p style="margin-bottom: 15px;">1. انقر على أيقونة التثبيت في شريط العنوان</p>
+                    <p style="margin-bottom: 15px;">2. أو استخدم قائمة المتصفح</p>
+                    <p style="margin-bottom: 15px;">3. اختر "تثبيت التطبيق"</p>
+                `;
+            }
+
+            content.innerHTML = instructions + `
+                <button onclick="this.parentElement.parentElement.remove()" 
+                        style="background: #2E86AB; color: white; border: none; padding: 10px 20px; 
+                               border-radius: 5px; cursor: pointer; margin-top: 20px;">
+                    حسناً
+                </button>
+            `;
+
+            modal.appendChild(content);
+            document.body.appendChild(modal);
+
+            // إغلاق النافذة عند النقر خارجها
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.remove();
+                }
+            });
+        }
+
+        // عرض زر التحميل عند تحميل الصفحة (للمتصفحات التي لا تدعم beforeinstallprompt)
+        setTimeout(() => {
+            if (installButton.style.display === 'none') {
+                showInstallButton();
+            }
+        }, 2000);
 
         // Share Button
         if (navigator.share) {

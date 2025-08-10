@@ -2,57 +2,43 @@
   "name": "بصائر النحو في اللغة العربية",
   "short_name": "بصائر النحو",
   "description": "دوسية تعليمية تفاعلية لتعلم النحو العربي بطريقة عصرية وممتعة",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#2E86AB",
   "orientation": "portrait-primary",
-  "scope": "/",
+  "scope": "./",
   "lang": "ar",
   "dir": "rtl",
   "icons": [
     {
-      "src": "icon-192.png",
+      "src": "./icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icon-512.png",
+      "src": "./icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     }
   ],
   "categories": ["education", "books", "reference"],
-  "screenshots": [
-    {
-      "src": "screenshot1.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide"
-    },
-    {
-      "src": "screenshot2.png",
-      "sizes": "750x1334",
-      "type": "image/png",
-      "form_factor": "narrow"
-    }
-  ],
   "shortcuts": [
     {
       "name": "فهرس المحتويات",
       "short_name": "الفهرس",
       "description": "الانتقال مباشرة إلى فهرس المحتويات",
-      "url": "/#content-index",
-      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+      "url": "./#content-index",
+      "icons": [{ "src": "./icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "أقسام الكلام",
       "short_name": "الكلام",
       "description": "الانتقال إلى درس أقسام الكلام",
-      "url": "/#speech-parts",
-      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+      "url": "./#speech-parts",
+      "icons": [{ "src": "./icon-192.png", "sizes": "192x192" }]
     }
   ]
 }
